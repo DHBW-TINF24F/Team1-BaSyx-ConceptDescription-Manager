@@ -6,7 +6,30 @@
 |   1.0   | 11.10.2025 |  Anna  |     Erste Version     |
 |   2.0   | 25.10.2025 |  Anna  |Überarbeitung des Inhalts und <br> Korrektur von Schreibfehlern|
 
-## 1. Zweck & Zielsetzung
+<!-- TOC -->
+* [Lastenheft – BaSyx ConceptDescription-Plugin(CD-Manager)](#lastenheft--basyx-conceptdescription-plugincd-manager)
+  * [Version Control](#version-control)
+  * [1. Zweck & Zielsetzung <a name="1.Zielsetzung"></a>](#1-zweck--zielsetzung-a-name1zielsetzunga)
+      * [Ziel:](#ziel-)
+  * [2. Produktkontext & Abgrenzung <a name="Produktkontext-&-Abgrenzung"></a>](#2-produktkontext--abgrenzung-a-nameproduktkontext--abgrenzunga)
+  * [3. Begriffe & Reverenzen](#3-begriffe--reverenzen)
+  * [4. Stakeholder & deren Rollen](#4-stakeholder--deren-rollen)
+  * [5. Nutzeranforderungen (Use Cases)](#5-nutzeranforderungen-use-cases)
+      * [UC-1: CD in Tabelle finden & ansehen](#uc-1-cd-in-tabelle-finden--ansehen)
+      * [UC-2: CD anlegen, bearbeiten & löschen (CRUD)](#uc-2-cd-anlegen-bearbeiten--löschen-crud)
+      * [UC-3: IEC-CDD-Import per URL](#uc-3-iec-cdd-import-per-url)
+      * [UC-4: Massenimport](#uc-4-massenimport)
+      * [UC-5: Nachvollziehbarkeit](#uc-5-nachvollziehbarkeit)
+      * [UC-6: Export/Integration(optional)](#uc-6-exportintegrationoptional)
+  * [6. Funktionale Anforderungen (MoSCoW)](#6-funktionale-anforderungen-moscow)
+      * [Muss (M)](#muss-m)
+      * [Soll(S)](#solls)
+      * [Kann(K)](#kannk)
+  * [7. Nicht funktionale Anforderungen (NFA)](#7-nicht-funktionale-anforderungen-nfa)
+  * [8. Akzeptanzkriterien](#8-akzeptanzkriterien)
+<!-- TOC -->
+
+## 1. Zweck & Zielsetzung <a name="1.Zielsetzung"></a>
 
 #### Ziel: 
 Ein webbasiertes Plugin("CD-Manager") für die BaSyx-GUI zur Verwaltung von Concept Descriptions(CD) nach AAS/ DataSpecificationIEC61360, inklusive komfortabler Listen-/Detail-Bearbeitung und einem IEC-CDD-Importer, der Merkmale aus der IEC-CDD per URL in das CD-Repository übernimmt.<br>
@@ -15,7 +38,7 @@ Finaler Nutzen:
      - Automatisiertes Einlesen von IEC-CDD-Daten (Zeitgewinn, geringere Fehlerrate).<br>
      - Beitragsfähige Open-Source-Erweiterung für Eclipse BaSyx inklusive Dokumentation und Demo-Hosting.
 
-## 2. Produktkontext & Abgrenzung
+## 2. Produktkontext & Abgrenzung <a name="Produktkontext-&-Abgrenzung"></a>
  - Systemkontext: BaSyx-Ökosystem (GUI/UI-Layer) mit bestehendem CD-Repository (BaSyx backend/REST). Der CD-Manager ist ein UI-Plugin mit Backend-Adapter.
  - Abhängigkeiten:
      - BaSyx-GUI (Version tbd), BaSyx-Backend(tbd)
@@ -70,11 +93,11 @@ Finaler Nutzen:
 8.	Build /Run fähig in lokaler BaSyx Dev Umgebung.
 9.	Vor dem Speichern prüft das System: Pflichtfelder, Datentypen, zulässige Werte, Identifier Format und Version/ Revision Konvention.
 10.	Export ausgewählter CDs als JSON.
-#### Soll(S)
+#### Soll (S)
 11.	Konfigurierbare Spalten in der Tabellenansicht, Persistenz je Nutzer (Local Storage).
 12.	Internationalisierung (mind. Deutsch/ Englisch) für UI Texte.
 13.	Rollenbasierter Zugriff(lesen/schreiben/löschen) über vorhandenes BaSyx Auth Konzept.
-#### Kann(K)
+#### Kann (K)
 14.	Massenimport (mehrere URLs/JSON Dateien) mit Ergebnisübersicht.
 15.	Tagging/Klassifikation zur besseren Gruppierung von CDs.
 16.	Vergleichsansicht zwischen zwei CDs.
