@@ -4,7 +4,7 @@
 
 | Version | Date       | Author | Comment       |
 | ------- | ---------- | ------ | ------------- |
-| 2.0     | 11.10.2025 | Anna   | Erste Version |
+| 1.0     | 11.10.2025 | Anna   | Erste Version |
 
 ## 1. Zweck & Zielsetzung
 
