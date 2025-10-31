@@ -1,2 +1,0 @@
-# Projekt-Doku
-Siehe Unterordner.
