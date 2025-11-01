@@ -4,7 +4,7 @@
 
 | Version | Date       | Author | Comment        |
 | ------- | ---------- | ------ | -------------- |
-| 1.0     | 23.10.2025 | Niklas | Zweite Version |
+| 1.0     | 23.10.2025 | Niklas | Erste Version  |
 
 ## Überblick
 
@@ -16,7 +16,7 @@ Es soll ein Plugin für die bestehende BaSyx-Web-UI erstellt werden mit dem Conc
 
 Die geplante UI-Erweiterung folgt grob diesem Layout:
 
-![Concept Description View Layout](./docs/images/wireframe.png)
+![Concept Description View Layout](images/wireframe.png)
 
 ### 1. Header-Navigation
 
