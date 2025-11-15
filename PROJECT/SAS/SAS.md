@@ -1,9 +1,10 @@
 # Version Control
 
-| **Version** | **Datum**   | **Autor**   | **Anmerkung** |
-|-------------|-------------|-------------|---------------|
-| 0.1         | 115.11.2025 | Christopher | Draft         |
-| 0.2         | 115.11.2025 | Christopher | Draft 2       |
+| **Version** | **Datum**  | **Autor**   | **Anmerkung** |
+|-------------|------------|-------------|---------------|
+| 0.1         | 15.11.2025 | Christopher | Draft 1       |
+| 0.2         | 15.11.2025 | Christopher | Draft 2       |
+| 0.3         | 15.11.2025 | Christopher | Draft 3       |
 
 # 1 Introduction
 
@@ -139,6 +140,14 @@ class "DataTable" <<Vue component>> {
   selectedColumns
 }
 
+' -----------------------
+' Typescript Component: Cd Exporter
+' -----------------------
+class "CdExporter" <<Typescript component>> {
+  ..methods..
+  +exportJSON(json)
+}
+
 @enduml
 ```
 
@@ -228,3 +237,4 @@ class "CdCddImporter" <<Typescript component>> {
 The attribute selector, data table, detail view and importer do communicate with each other so the orchestration of their communication should be handled gracefully.  
 As Vue components communicate only with their direct parent- or children components over properties (props) and events, the view itself takes care of the communication orchestration, as it will be the parent of all those components.
 
+![communication-types.png](images/communication-types.png)
