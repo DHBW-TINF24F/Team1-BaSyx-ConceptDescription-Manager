@@ -94,156 +94,34 @@ Below are some references to valuable information about the components
 Users should be able to use the already established navigation to find the view for managing CDs.  
 Here the architecture requires the addition of a new view and an additional category in the navigation panel.
 
-```plantuml
-@startuml
-skinparam style strictuml
-
-' -----------------------
-' Vue Component: CD Viewer
-' -----------------------
-class "CDViewer" <<Vue component>> {
-  ..methods..
-  handleColumnSelect()
-  handleItemFocused()
-  handleItemModified()
-}
-
-@enduml
-```
+![CDViewer UML](images/cd-viewer-uml.png)
 
 **_SRS-2: Display data in Data Table_**  
 In the CD view a user should be able to see all CDs listed in a data table, which shall be provided as a new component.  
-This component should support **filter**, **sort** and **interaction features** as specified in the [SRS - Datatable](../SRS/TINF24F_SRS_Team_1_1v0.md#3-datentabelle-required).
+This component should support **filter**, **sort** and **interaction features** such as **import** and **deletion** of CDs.
 
-```plantuml
-@startuml
-skinparam style strictuml
-
-' -----------------------
-' Vue Component: Data Table
-' -----------------------
-class "DataTable" <<Vue component>> {
-  ..props..
-  items : JSONArray
-  selectedColumns : Array
-
-  ..methods..
-  filterColumns()
-  sortColumns()
-  handleItemFocus()
-  exportFocussedItem()
-  loadItems()
-
-  ..watcher..
-  selectedColumns
-}
-```
-```plantuml
-@startuml
-skinparam style strictuml
-skinparam classAttributeIconSize 0
-
-' -----------------------
-' Typescript Module: Cd Exporter
-' -----------------------
-class "CdExporter" <<Typescript module>> {
-  ..methods..
-  +exportCdAsJSON(json)
-}
-
-' -----------------------
-' Typescript Module: Cd Store
-' -----------------------
-class "CdStore" <<Typescript module>> {
-  ..methods..
-  +getConceptDescriptions(itemLimit, columnFilter, sortColumn)
-  +createConceptDesctiption(cd)
-  +updateConceptDescription(cd)
-  +deleteConceptDescription(cd)
-}
-
-@enduml
-```
+![DataTable UML](images/data-table-uml.png)
+![CDExporter & CDStore UML](images/cd-exporter-and-cd-store-uml.png)
 
 **_SRS-3: Data Table adaptation_**  
 The attribute selector is a sidebar which can be collapsed to the side with an integrated collapse button.  
 It should support multiple features such as adapting the displayed CD data table columns dynamically and offering buttons to **import CDs and CDDs**, **clone a full CD repo** and **collapsing the sidebar** as specified in the [SRS - Attribute Selector](../SRS/TINF24F_SRS_Team_1_1v0.md#2-attribut-selector-required).  
 For this functionality a new component will be implemented:
 
-```plantuml
-@startuml
-skinparam style strictuml
-skinparam classAttributeIconSize 0
-
-' -----------------------
-' Vue Component: Attribute Selector
-' -----------------------
-class "AttributeSelector" <<Vue component>> {
-  ..props..
-  selectedColumns : Array
-
-  ..methods..
-  columnSelectionCanged()
-  itemImport()
-  cloneRepo()
-}
-
-@enduml
-```
+![AttributeSelector UML](images/attribute-selector-uml.png)
 
 **_SRS-4: Detail View of CD_**  
 A detail view is required to support the detailed inspection of a CDs data and provide the possibility to edit it directly in that view.
-For this a CD focussed in the Table should be displayed to the right of the table.  
+For this a CD focused in the Table should be displayed to the right of the table.  
 Here a new component must be implemented:
 
-```plantuml
-@startuml
-skinparam style strictuml
-skinparam classAttributeIconSize 0
-
-' -----------------------
-' Vue Component: Detail View
-' -----------------------
-class "DetailView" <<Vue component>> {
-  ..props..
-  item : JSONObject
-
-  ..methods..
-  toggleEditMode()
-  saveModifiedItem()
-  discardChanges()
-
-  ..watcher..
-  item
-}
-
-@enduml
-```
+![DetailView UML](images/detail-view-uml.png)
 
 **_SRS-5: Create and Import CDs_**  
 The **creation** and **import** of CDs and CDDs can be accessed by the attribute selector's **import button** and requires additional validation logic for data quality and data integrity.  
 This requires a new importer component for CDs and CDDs which also takes care of validating the data:
 
-```plantuml
-@startuml
-skinparam style strictuml
-skinparam classAttributeIconSize 0
-
-' -----------------------
-' Typescript Module: CD CDD Importer
-' -----------------------
-class "CdCddImporter" <<Typescript module>> {
-  ..methods..
-  +importFromURI(uri)
-  +importFromJSON(json)
-  -importCD(cdUri)
-  -importCDD(cddUri)
-  -validateCD(cd)
-  -validateCDD(cdd)
-}
-
-@enduml
-```
+![CdCddImporter UML](images/cd-cdd-importer-uml.png)
 
 ### 2.2.2 Module hierarchy
 
@@ -253,128 +131,11 @@ Emitted events can transport data up to the parent where it can be consumed imme
 
 Using Vue's communication concept is very important to make use of its reactive rendering features.  
 Taking Vue's communication concept into account, the following component structure has been proposed.
-```plantuml
-@startuml
-title Component Structure Overview
 
-actor UserClient as UC
-
-package "Frontend (Vue Application)" {
-    component CDViewer as CDV {
-        component "Attribute Selector" as AS
-        component DataTable as DT
-        component DetailView as DV
-    }
-}
-
-package "Frontend Utility Modules" {
-    component CdExporter as EXPO
-    component CdCddImporter as IMP
-    component CdStore as Store
-}
-
-UC --> AS : interacts
-UC --> DT : interacts
-UC --> DV : interacts
-
-AS --> IMP : uses
-DT --> EXPO : uses
-DT --> Store : uses (delete, refresh)
-DV --> Store : uses (update)
-IMP --> Store : uses (import)
-
-@enduml
-```
+![Component Structure Overview](images/component-structure-uml.png)
 
 ## 2.3 Communication Architecture
 
-[//]: # (```mermaid)
-
-[//]: # (sequenceDiagram)
-
-[//]: # (    actor UC as UserClient)
-
-[//]: # (    participant AS as AttributeSelector)
-
-[//]: # (    participant CDV as CDViewer)
-
-[//]: # (    participant DT as DataTable)
-
-[//]: # (    participant DV as DetailView)
-
-[//]: # (    participant EXPO as CdExporter)
-
-[//]: # (    participant IDL as ImportDialogue)
-
-[//]: # (    participant IMP as CdCddImporter)
-
-[//]: # (    participant Store as CdStore)
-
-[//]: # (    participant API as Backend API)
-
-[//]: # ()
-[//]: # (    UC->>AS: select column checkbox)
-
-[//]: # (    AS->>CDV: emit event 'columnSelection')
-
-[//]: # (    CDV->>DT: inject selected columns)
-
-[//]: # (    DT->>UC: render new columns)
-
-[//]: # ()
-[//]: # (    UC->>AS: click import button)
-
-[//]: # (    AS->>IDL: input import URLs)
-
-[//]: # (    IDL->>IMP: pass URLs)
-
-[//]: # (    IMP->>Store: call import)
-
-[//]: # (    Store->>API: import request)
-
-[//]: # (    API-->>Store: success)
-
-[//]: # (    Store-->>DT: update store)
-
-[//]: # (    DT->>UC: render new items)
-
-[//]: # ()
-[//]: # (    UC->>DT: click export)
-
-[//]: # (    DT->>EXPO: export request)
-
-[//]: # (    EXPO-->>UC: deliver JSON download)
-
-[//]: # ()
-[//]: # (    UC->>DT: click table item)
-
-[//]: # (    DT->>CDV: emit itemFocused)
-
-[//]: # (    CDV->>DV: inject item)
-
-[//]: # (    DV->>UC: render detail view)
-
-[//]: # ()
-[//]: # (    UC->>DV: Click edit)
-
-[//]: # (    DV->>UC: render edit mode)
-
-[//]: # ()
-[//]: # (    UC->>DV: Save changes)
-
-[//]: # (    DV->>Store: update request)
-
-[//]: # (    Store->>API: update item)
-
-[//]: # (    API-->>Store: success)
-
-[//]: # (    Store-->>DV: update store)
-
-[//]: # (    DV->>DT: emit updated)
-
-[//]: # (    DT->>UC: render updated item)
-
-[//]: # (```)
 **_UC-1: Find, filter and sort CDs_**
 ```mermaid
 sequenceDiagram
@@ -453,12 +214,4 @@ sequenceDiagram
     DT->>CDV: emit itemFocused
     CDV->>DV: inject item
     DV->>UC: render detail view
-```
-```mermaid
-sequenceDiagram
-    actor UC as UserClient
-    participant DV as DetailView
-
-    UC->>DV: Click edit
-    DV->>UC: render edit mode
 ```
