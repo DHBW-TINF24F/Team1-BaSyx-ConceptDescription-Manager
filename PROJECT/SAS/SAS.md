@@ -21,6 +21,7 @@
 | 0.2         | 15.11.2025 | Christopher | Draft 2       |
 | 0.3         | 15.11.2025 | Christopher | Draft 3       |
 | 0.4         | 16.11.2025 | Christopher | Draft 4       |
+| 1.0         | 16.11.2025 | Christopher | Version 1     |
 
 # 1 Introduction
 
@@ -37,7 +38,8 @@ and project owners (POs).
 
 The goal of this project is to extend the Concept Description (CD) capabilities of the Eclipse BaSyx Ecosystem.
 
-**Following features are in-scope for this project:**  
+**Following features are in-scope for this project:**
+
 1. **_SRS-1:_** Extension of the Web UIs header navigation to a new CD view
 2. **_SRS-2:_** CD data table to display and interact with available CDs
 3. **_SRS-3:_** Attribute Selector for the CD data table
@@ -91,8 +93,8 @@ Below are some references to valuable information about the components
 | GitHub repo             | basyx-aas-web-ui   | [repo link](https://github.com/eclipse-basyx/basyx-aas-web-ui)            |
 | Web server & Build tool | Vite               | [Vite Introduction](https://vite.dev/guide/#overview)                     |
 | JavaScript Framework    | Vue.js (Abbr. Vue) | [Vue Introduction](https://vuejs.org/guide/introduction.html#what-is-vue) |
-|                         | Yarn               |                                                                           |
-|                         | eslint             |                                                                           |
+| Dependency management   | Yarn               | [Yarn Homepage](https://classic.yarnpkg.com/en/)                          |
+| Static code analyzer    | ESLint             | [ESLint Homepage](https://eslint.org/)                                    |
 
 | Java Backend                       | Name                  | References                                                                                                       |
 |------------------------------------|-----------------------|------------------------------------------------------------------------------------------------------------------|
@@ -116,28 +118,34 @@ Here the architecture requires the addition of a new view and an additional cate
 ![CDViewer UML](images/cd-viewer-uml.png)
 
 **_SRS-2: Display data in Data Table_**  
-In the CD view a user should be able to see all CDs listed in a data table, which shall be provided as a new component.  
-This component should support **filter**, **sort** and **interaction features** such as **import** and **deletion** of CDs.
+In the CD view a user should be able to see all CDs listed in a data table, which shall be provided as a new
+component.  
+This component should support **filter**, **sort** and **interaction features** such as **import** and **deletion** of
+CDs.
 
 ![DataTable UML](images/data-table-uml.png)
 ![CDExporter & CDStore UML](images/cd-exporter-and-cd-store-uml.png)
 
 **_SRS-3: Data Table adaptation_**  
 The attribute selector is a sidebar which can be collapsed to the side with an integrated collapse button.  
-It should support multiple features such as adapting the displayed CD data table columns dynamically and offering buttons to **import CDs and CDDs**, **clone a full CD repo** and **collapsing the sidebar** as specified in the [SRS - Attribute Selector](../SRS/TINF24F_SRS_Team_1_1v0.md#2-attribut-selector-required).  
+It should support multiple features such as adapting the displayed CD data table columns dynamically and offering
+buttons to **import CDs and CDDs**, **clone a full CD repo** and **collapsing the sidebar** as specified in
+the [SRS - Attribute Selector](../SRS/TINF24F_SRS_Team_1_1v0.md#2-attribut-selector-required).  
 For this functionality a new component will be implemented:
 
 ![AttributeSelector UML](images/attribute-selector-uml.png)
 
 **_SRS-4: Detail View of CD_**  
-A detail view is required to support the detailed inspection of a CDs data and provide the possibility to edit it directly in that view.
+A detail view is required to support the detailed inspection of a CDs data and provide the possibility to edit it
+directly in that view.
 For this a CD focused in the Table should be displayed to the right of the table.  
 Here a new component must be implemented:
 
 ![DetailView UML](images/detail-view-uml.png)
 
 **_SRS-5: Create and Import CDs_**  
-The **creation** and **import** of CDs and CDDs can be accessed by the attribute selector's **import button** and requires additional validation logic for data quality and data integrity.  
+The **creation** and **import** of CDs and CDDs can be accessed by the attribute selector's **import button** and
+requires additional validation logic for data quality and data integrity.  
 This requires a new importer component for CDs and CDDs which also takes care of validating the data:
 
 ![CdCddImporter UML](images/cd-cdd-importer-uml.png)
@@ -145,7 +153,8 @@ This requires a new importer component for CDs and CDDs which also takes care of
 ### 2.2.2 Module hierarchy
 
 Vue components communicate only with their direct parent- or children components over properties (props) and events.  
-Emitted events can transport data up to the parent where it can be consumed immediately or passed down to another child by injecting it into a child's property.
+Emitted events can transport data up to the parent where it can be consumed immediately or passed down to another child
+by injecting it into a child's property.
 ![communication-types.png](images/communication-types.png)
 
 Using Vue's communication concept is very important to make use of its reactive rendering features.  
@@ -156,112 +165,111 @@ Taking Vue's communication concept into account, the following component structu
 ## 2.3 Communication Architecture
 
 **_UC-1: Find, filter and sort CDs_**
+
 ```mermaid
 sequenceDiagram
     title Find, filter and sort CDs
-    
     actor UC as UserClient
     participant AS as AttributeSelector
     participant CDV as CDViewer
     participant DT as DataTable
     participant Store as CdStore
     participant API as Backend API
-    
-    UC->>AS: select column checkbox
-    AS->>CDV: emit event 'columnSelection'
-    CDV->>DT: inject selected columns
-    DT->>UC: render new columns
-    UC->>DT: filter/sort by column
-    DT->>Store: request data
-    Store->>API: request data
-    API-->>Store: success
-    Store-->>DT: success
-    DT->>UC: render data
+    UC ->> AS: select column checkbox
+    AS ->> CDV: emit event 'columnSelection'
+    CDV ->> DT: inject selected columns
+    DT ->> UC: render new columns
+    UC ->> DT: filter/sort by column
+    DT ->> Store: request data
+    Store ->> API: request data
+    API -->> Store: success
+    Store -->> DT: success
+    DT ->> UC: render data
 ```
+
 **_SRS-2: CD export as JSON_**
+
 ```mermaid
 sequenceDiagram
     title export CDs
-    
     actor UC as UserClient
     participant DT as DataTable
     participant EXPO as CdExporter
-
-    UC->>DT: click export
-    DT->>EXPO: export request
-    EXPO-->>UC: deliver JSON download
+    UC ->> DT: click export
+    DT ->> EXPO: export request
+    EXPO -->> UC: deliver JSON download
 ```
+
 **_UC-2, UC-3 & UC-5: Create, update and delete CDs_**
+
 ```mermaid
 sequenceDiagram
     title Create/import CDs & CDDs
-    
     actor UC as UserClient
     participant AS as AttributeSelector
     participant IDL as ImportDialogue
     participant IMP as CdCddImporter
     participant Store as CdStore
     participant API as Backend API
-
-    UC->>AS: click import button
-    AS->>IDL: input import URLs
-    IDL->>IMP: pass URLs
-    IMP->>Store: call import
-    Store->>API: import request
-    API-->>Store: success
-    Store->>UC: render success popup
+    UC ->> AS: click import button
+    AS ->> IDL: input import URLs
+    IDL ->> IMP: pass URLs
+    IMP ->> Store: call import
+    Store ->> API: import request
+    API -->> Store: success
+    Store ->> UC: render success popup
 ```
+
 ```mermaid
 sequenceDiagram
     title Update/Edit CDs
-    
     actor UC as UserClient
     participant DV as DetailView
     participant Store as CdStore
     participant API as Backend API
     participant DT as DataTable
-
-    UC->>DV: toggle edit
-    UC->>DV: edit data
-    UC->>DV: save changes
-    DV->>Store: update request
-    Store->>API: update item
-    API-->>Store: success
-    Store->>Store: update store
-    DV-->>UC: re-render
-    DT-->>UC: re-render
+    UC ->> DV: toggle edit
+    UC ->> DV: edit data
+    UC ->> DV: save changes
+    DV ->> Store: update request
+    Store ->> API: update item
+    API -->> Store: success
+    Store ->> Store: update store
+    DV -->> UC: re-render
+    DT -->> UC: re-render
 ```
+
 ```mermaid
 sequenceDiagram
     title Delete CDs
-    
     actor UC as UserClient
     participant DT as DataTable
     participant Store as CdStore
     participant API as Backend API
-
-    UC->>DT: click delete item
-    DT->>Store: delete request
-    Store->>API: delete request
-    API-->>Store: success
-    Store-->>DT: success
-    DT-->>UC: re-render
+    UC ->> DT: click delete item
+    DT ->> Store: delete request
+    Store ->> API: delete request
+    API -->> Store: success
+    Store -->> DT: success
+    DT -->> UC: re-render
 ```
+
 **_SRS-4: Show details of specific CD_**
+
 ```mermaid
 sequenceDiagram
     actor UC as UserClient
     participant DT as DataTable
     participant CDV as CDViewer
     participant DV as DetailView
-
-    UC->>DT: click table item
-    DT->>CDV: emit itemFocused
-    CDV->>DV: inject item
-    DV->>UC: render detail view
+    UC ->> DT: click table item
+    DT ->> CDV: emit itemFocused
+    CDV ->> DV: inject item
+    DV ->> UC: render detail view
 ```
 
 # 3 Outlook
 
 The architecture described in this document establishes the current structure and interactions of the system.  
-Future work may extend this document by refining module responsibilities, enhancing performance, or introducing additional components as more requirements develop.
+Future work may extend this document by refining module responsibilities, enhancing performance, or introducing
+additional components as more requirements develop.
