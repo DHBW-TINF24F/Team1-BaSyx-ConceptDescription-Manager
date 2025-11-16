@@ -2,7 +2,7 @@
 
 Team 1
 
-## Version Control
+## Versionskontrolle
 
 | **Version** | **Datum** | **Autor** | **Anmerkung** |
 | --- | --- | --- | --- |
