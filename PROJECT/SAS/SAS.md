@@ -1,3 +1,18 @@
+<!-- TOC -->
+* [Version Control](#version-control)
+* [1 Introduction](#1-introduction)
+  * [1.1 Purpose](#11-purpose)
+  * [1.2 Scope](#12-scope)
+  * [1.3 Definitions, Acronyms, Abbreviations](#13-definitions-acronyms-abbreviations)
+* [2 System Overview](#2-system-overview)
+  * [2.1 System Structure (black-box)](#21-system-structure-black-box)
+  * [2.2 System Architecture (white-box)](#22-system-architecture-white-box)
+    * [2.2.1 Module derivation](#221-module-derivation)
+    * [2.2.2 Module hierarchy](#222-module-hierarchy)
+  * [2.3 Communication Architecture](#23-communication-architecture)
+* [3 Outlook](#3-outlook)
+<!-- TOC -->
+
 # Version Control
 
 | **Version** | **Datum**  | **Autor**   | **Anmerkung** |
@@ -24,11 +39,15 @@ The goal of this project is to extend the Concept Description (CD) capabilities 
 
 **Following features are in-scope for this project:**  
 1. **_SRS-1:_** Extension of the Web UIs header navigation to a new CD view
-2. **_SRS-2:_** CD data table to display all available CDs
+2. **_SRS-2:_** CD data table to display and interact with available CDs
 3. **_SRS-3:_** Attribute Selector for the CD data table
 4. **_SRS-4:_** Detail view of specific CDs
 5. **_SRS-5:_** Creation and Import of CDs into the CD repository
 6. **_UC-1:_** Find CD in data table
+7. **_UC-2:_** Create, import and delete CDs
+8. **_UC-3:_** Import IEC-CDD-import
+9. **_UC-4:_** Batch-import (**_UC-2_** and repo cloning)
+10. **_UC-5:_** JSON import of CDs (**_UC-2_**)
 
 **Following features are out of scope for this project:**
 
@@ -139,6 +158,8 @@ Taking Vue's communication concept into account, the following component structu
 **_UC-1: Find, filter and sort CDs_**
 ```mermaid
 sequenceDiagram
+    title Find, filter and sort CDs
+    
     actor UC as UserClient
     participant AS as AttributeSelector
     participant CDV as CDViewer
@@ -157,9 +178,24 @@ sequenceDiagram
     Store-->>DT: success
     DT->>UC: render data
 ```
-**_UC-2: Create, update and delete CDs_**
+**_SRS-2: CD export as JSON_**
 ```mermaid
 sequenceDiagram
+    title export CDs
+    
+    actor UC as UserClient
+    participant DT as DataTable
+    participant EXPO as CdExporter
+
+    UC->>DT: click export
+    DT->>EXPO: export request
+    EXPO-->>UC: deliver JSON download
+```
+**_UC-2, UC-3 & UC-5: Create, update and delete CDs_**
+```mermaid
+sequenceDiagram
+    title Create/import CDs & CDDs
+    
     actor UC as UserClient
     participant AS as AttributeSelector
     participant IDL as ImportDialogue
@@ -177,6 +213,8 @@ sequenceDiagram
 ```
 ```mermaid
 sequenceDiagram
+    title Update/Edit CDs
+    
     actor UC as UserClient
     participant DV as DetailView
     participant Store as CdStore
@@ -195,14 +233,21 @@ sequenceDiagram
 ```
 ```mermaid
 sequenceDiagram
+    title Delete CDs
+    
     actor UC as UserClient
     participant DT as DataTable
-    participant EXPO as CdExporter
+    participant Store as CdStore
+    participant API as Backend API
 
-    UC->>DT: click export
-    DT->>EXPO: export request
-    EXPO-->>UC: deliver JSON download
+    UC->>DT: click delete item
+    DT->>Store: delete request
+    Store->>API: delete request
+    API-->>Store: success
+    Store-->>DT: success
+    DT-->>UC: re-render
 ```
+**_SRS-4: Show details of specific CD_**
 ```mermaid
 sequenceDiagram
     actor UC as UserClient
@@ -215,3 +260,8 @@ sequenceDiagram
     CDV->>DV: inject item
     DV->>UC: render detail view
 ```
+
+# 3 Outlook
+
+The architecture described in this document establishes the current structure and interactions of the system.  
+Future work may extend this document by refining module responsibilities, enhancing performance, or introducing additional components as more requirements develop.
