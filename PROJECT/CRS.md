@@ -10,6 +10,7 @@ Team 1
 | 2.0 | 25.10.2025 | Anna | Überarbeitung des Inhalts und  <br>Korrektur von Schreibfehlern |
 | 3.0 | 02.11.2025 | Anna | Gezielte Anpassung an die Formatanforderungen |
 | 4.0 | 14.11.2025 | Anna | Denglisch -> deutsch & Abgleich mit SRS |
+| 5.0 | 18.11.2025 | Anna | Nicht funktionale Anforderungen überarbeitet | 
 
 <!-- TOC -->
 * [Lastenheft - BaSyx ConceptDescription-Plugin(CD-Manager)](#lastenheft---basyx-conceptdescription-plugincd-manager)
@@ -103,10 +104,10 @@ Erweiterungen sind konfigurierbare Tabellenspalten (nutzerbezogen gespeichert), 
 
 ## Nicht funktionale Anforderungen (NFA)
 
-- Performance: Einzel Import < 5 Sekunden bei erreichbarer CDD, Batch 50 URLs < 5 min (Netzabhängigkeit ausgenommen).
-- Sicherheit: Nur authentifizierte Nutzer, Rollen beachten, Eingaben server /clientseitig validieren, SSRF/HTML Parsing absichern (Whitelist).
-- Wartbarkeit: Modulare Architektur (Importer, Mapping, UI, API Client getrennt), Logging, Feature Flags für Importer.
-- Portabilität: Containerisierbar (Docker), CI Build auf GitHub Actions.
+- Performance: Einzel Import **< 0,5 Sekunden** bei erreichbarer CDD, Batch **N** URLs **< N * 0,5 Sekunden** aufgrund von linearer Skalierung (Netzabhängigkeit ausgenommen).
+- Sicherheit: Role Based Access Control (RBAC) via Keycloak
+- Wartbarkeit: Modulare Architektur, Code Dokumentation.
+- Portabilität: Containerisierbar (Docker), möglichkeit für CI Build auf GitHub Actions.
 - Internationalisierung: de/en, UTF8 und locale abhängige Formate.
 
 ## Akzeptanzkriterien
