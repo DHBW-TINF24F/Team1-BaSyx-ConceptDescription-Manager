@@ -9,21 +9,23 @@
 * [2 System Overview](#2-system-overview)
   * [2.1 System Structure (black-box)](#21-system-structure-black-box)
   * [2.2 System Architecture (white-box)](#22-system-architecture-white-box)
-    * [2.2.1 Module derivation](#221-module-derivation)
-    * [2.2.2 Module hierarchy](#222-module-hierarchy)
+    * [2.2.1 Technological restrictions & priorities](#221-technological-restrictions--priorities)
+    * [2.2.2 Module derivation](#222-module-derivation)
+    * [2.2.3 Module hierarchy](#223-module-hierarchy)
   * [2.3 Communication Architecture](#23-communication-architecture)
 * [3 Outlook](#3-outlook)
 <!-- TOC -->
 
 # Version Control
 
-| **Version** | **Datum**  | **Autor**   | **Anmerkung** |
-|-------------|------------|-------------|---------------|
-| 0.1         | 15.11.2025 | Christopher | Draft 1       |
-| 0.2         | 15.11.2025 | Christopher | Draft 2       |
-| 0.3         | 15.11.2025 | Christopher | Draft 3       |
-| 0.4         | 16.11.2025 | Christopher | Draft 4       |
-| 1.0         | 16.11.2025 | Christopher | Version 1     |
+| **Version** | **Datum**  | **Autor**   | **Anmerkung**       |
+|-------------|------------|-------------|---------------------|
+| 0.1         | 15.11.2025 | Christopher | Draft 1             |
+| 0.2         | 15.11.2025 | Christopher | Draft 2             |
+| 0.3         | 15.11.2025 | Christopher | Draft 3             |
+| 0.4         | 16.11.2025 | Christopher | Draft 4             |
+| 1.0         | 16.11.2025 | Christopher | Version 1           |
+| 2.0         | 18.11.2025 | Christopher | Added Chapter 2.2.1 |
 
 # 1 Introduction
 
@@ -75,6 +77,7 @@ In short only the Web UI will be enxtended, while the rest of the infrastructure
 | Asset Administration Shell         | AAS                           | AASs                        |
 | Concept Description                | CD                            | CDs                         |
 | Common Data Dictionary             | CDD                           | CDDs                        |
+| Document Object Model              | DOM                           | -                           |
 
 # 2 System Overview
 
@@ -111,7 +114,19 @@ Below are some references to valuable information about the components
 
 ## 2.2 System Architecture (white-box)
 
-### 2.2.1 Module derivation
+### 2.2.1 Technological restrictions & priorities
+
+1. Vue components - Vue supports Components to encourage Modular architecture. Separating the UI into separate components is desired due to maintainability and resuability.
+
+2. Vue reactivity - Vue provides a strong automatic reactivity engine, <removing> the need for manual state- and DOM updates. This keeps the UI up to date without much opportunity to introduce faulty updates and rendering.
+
+3. Vue compontent communication - Components can make use of Vue's reactivity capabilities by communicating over events and props. A deliberatly chosen hierarchical structure of all components makes it easy to make use of Vue's reactivity.
+
+4. Typescript Modules - Typescript Modules help greatly to separate component functionality and business logic. This allows for future adaptation of component functionality and business logic independently as well as reusability in any other component on demand.
+
+5. Store - Stores centralize data management, as single point of truth they handle state updates for all components simultaneously. This is especially useful to avoid data being out of sync between multiple components.
+
+### 2.2.2 Module derivation
 
 **_SRS-1: View navigation_**  
 Users should be able to use the already established navigation to find the view for managing CDs.  
@@ -152,7 +167,7 @@ This requires a new importer component for CDs and CDDs which also takes care of
 
 ![CdCddImporter UML](images/cd-cdd-importer-uml.png)
 
-### 2.2.2 Module hierarchy
+### 2.2.3 Module hierarchy
 
 Vue components communicate only with their direct parent- or children components over properties (props) and events.  
 Emitted events can transport data up to the parent where it can be consumed immediately or passed down to another child
