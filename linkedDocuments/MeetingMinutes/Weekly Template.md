@@ -1,11 +1,11 @@
 # Team Meeting  
 **Team1-BaSyx-ConceptDescription-Manager**
 
-**Meeting Type**: Weekly  
-**Datum/Zeit: 
-Moderator:  Anna
-Protokoll: Lütfi  
-Teilnehmer: Anna, Chris, Niklas, Priyanshu, Lütfi  
+**Meeting Type**: Weekly<br>  
+**Datum/Zeit:**<br>
+Moderator:  Anna<br>
+Protokoll: Lütfi<br>
+Teilnehmer: Anna, Chris, Niklas, Priyanshu, Lütfi<br>  
 Abwesend (entschuldigt): -
 
 ---
