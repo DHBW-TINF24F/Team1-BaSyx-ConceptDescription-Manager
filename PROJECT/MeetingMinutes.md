@@ -21,3 +21,7 @@ Die einzeilnen Team meetings finden Sie in den aufgelisteten Dokumenten:
 - [Weekly 25.10.2025](../linkedDocuments/MeetingMinutes/25.10.2025.md)
 - [Weekly 01.11.2025](../linkedDocuments/MeetingMinutes/01.11.2025.md)
 - [Weekly 09.11.2025](../linkedDocuments/MeetingMinutes/09.11.2025.md)
+- [Weekly 15.11.2025](../linkedDocuments/MeetingMinutes/15.11.2025.md)
+- [Weekly 13.12.2025](../linkedDocuments/MeetingMinutes/13.12.2025.md)
+- [Weekly 03.01.2026](../linkedDocuments/MeetingMinutes/03.01.2026.md)
+
