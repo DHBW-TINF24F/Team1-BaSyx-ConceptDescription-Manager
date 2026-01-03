@@ -5,8 +5,9 @@
 **Datum/Zeit:**<br>
 Moderator:  Anna<br>
 Protokoll: Lütfi<br>
-Teilnehmer: Anna, Chris, Niklas, Priyanshu, Lütfi<br>  
-Abwesend (entschuldigt): -
+Teilnehmer: Anna, Chris, Niklas, Priyanshu, Lütfi  
+Abwesend (entschuldigt): 
+Abwesend (unentschuldigt): 
 
 ---
 
