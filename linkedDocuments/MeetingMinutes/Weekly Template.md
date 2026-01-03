@@ -6,7 +6,7 @@
 Moderator:  Anna<br>
 Protokoll: Lütfi<br>
 Teilnehmer: Anna, Chris, Niklas, Priyanshu, Lütfi  
-Abwesend (entschuldigt): 
+Abwesend (entschuldigt): <br>
 Abwesend (unentschuldigt): 
 
 ---
