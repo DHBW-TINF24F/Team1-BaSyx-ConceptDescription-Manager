@@ -1,7 +1,7 @@
 # Team Meeting  
 **Team1-BaSyx-ConceptDescription-Manager**
 
-**Meeting Type**: Weekly<br>  
+**Meeting Type**: Weekly<br>
 **Datum/Zeit:**<br>
 Moderator:  Anna<br>
 Protokoll: Lütfi<br>
