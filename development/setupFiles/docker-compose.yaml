@@ -5,4 +5,53 @@ services:
     ports:
       - "8081:8081"
     volumes:
-      - ./application.properties:/application/application.properties
+      # - ./application.properties:/application/application.properties
+      - ./basyx/cd-repo.yml:/application/application.yml
+    restart: always
+      
+  aas-env:
+    image: eclipsebasyx/aas-environment:2.0.0-SNAPSHOT
+    container_name: aas-env
+    environment:
+      - SERVER_PORT=8081
+    volumes:
+      - ./aas:/application/aas
+      - ./basyx/aas-env.properties:/application/application.properties
+    ports:
+      - '9081:8081'
+    depends_on:
+      aas-registry:
+        condition: service_healthy
+      sm-registry:
+        condition: service_healthy
+    restart: always
+
+  aas-registry:
+    image: eclipsebasyx/aas-registry-log-mem:2.0.0-SNAPSHOT
+    container_name: aas-registry
+    ports:
+      - '9082:8080'
+    environment:
+      - SERVER_PORT=8080
+    volumes:
+      - ./basyx/aas-registry.yml:/workspace/config/application.yml
+
+  sm-registry:
+    image: eclipsebasyx/submodel-registry-log-mem:2.0.0-SNAPSHOT
+    container_name: sm-registry
+    ports:
+      - '9083:8080'
+    environment:
+      - SERVER_PORT=8080
+    volumes:
+      - ./basyx/sm-registry.yml:/workspace/config/application.yml
+
+  aas-discovery:
+    image: eclipsebasyx/aas-discovery:2.0.0-SNAPSHOT
+    container_name: aas-discovery
+    environment:
+      - SERVER_PORT=8081
+    volumes:
+      - ./basyx/aas-discovery.properties:/application/application.properties
+    ports:
+      - '9084:8081'
