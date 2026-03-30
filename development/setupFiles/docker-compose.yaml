@@ -13,12 +13,12 @@ services:
     image: eclipsebasyx/aas-environment:2.0.0-SNAPSHOT
     container_name: aas-env
     environment:
-      - SERVER_PORT=8081
+      - SERVER_PORT=9081
     volumes:
       - ./aas:/application/aas
       - ./basyx/aas-env.properties:/application/application.properties
     ports:
-      - '9081:8081'
+      - '9081:9081'
     depends_on:
       aas-registry:
         condition: service_healthy
