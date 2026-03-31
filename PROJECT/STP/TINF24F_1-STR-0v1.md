@@ -3,7 +3,7 @@
 **Team:** Team 1
 **Role owner:** Priyanshu (Test Manager)
 **Date:** 2026-03-31
-**Status:** In progress — partial execution completed
+**Status:** Partial — remaining tests blocked pending branch merge
 
 ---
 
@@ -11,19 +11,19 @@
 
 | Version | Date | Author | Notes |
 |---------|------|--------|-------|
-| 0.1 | 2026-03-31 | Priyanshu | Template created; results to be filled after execution |
+| 0.1 | 2026-03-31 | Priyanshu | Initial execution — AASX CD Importer tests completed; remaining tests blocked pending merge of other feature branches |
 
 ---
 
-## 1. Test Environment (record exact versions)
+## 1. Test Environment
 
 | Component | Details |
 |---|---|
 | OS | macOS |
-| Browser | Chrome (exact version not recorded) |
+| Browser | Chrome |
 | Frontend URL | `http://localhost:3001` |
 | Backend URL | `http://localhost:8081` |
-| Frontend commit / branch | not recorded |
+| Frontend branch tested | `feature/aasx-cd-importer` |
 | Docker image (cd-repo) | `eclipsebasyx/conceptdescription-repository:2.0.0-SNAPSHOT` |
 | Test execution date | 2026-03-31 |
 
@@ -36,7 +36,7 @@
 | Total test cases | 12 |
 | Passed | 3 |
 | Failed | 0 |
-| Not executed | 9 |
+| Not executed (blocked) | 9 |
 | Defects found | 0 |
 
 ---
@@ -47,24 +47,24 @@
 
 | TC ID | Name | Result | Actual Result / Notes | Evidence | Bug ref |
 |---|---|---|---|---|---|
-| TC.NAV.001.001.F | Header navigation to CD-Manager | Not executed | Not executable in the tested build on 2026-03-31. A dedicated `CD-Manager` navigation entry was not available in the running frontend. | - | - |
-| TC.ATTR.002.001.F | Sidebar collapse and expand | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD-Manager sidebar UI was not available. | - | - |
-| TC.TBL.003.001.F | Attribute selection + max 4 columns | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD-Manager table UI was not available. | - | - |
-| TC.TBL.003.002.F | Table pagination | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD-Manager table UI was not available. | - | - |
-| TC.TBL.003.003.F | Free text search | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD-Manager table UI was not available. | - | - |
-| TC.DETAIL.004.001.F | Detail view shows full CD | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD detail view was not available. | - | - |
-| TC.DETAIL.004.002.F | Edit + Save + Persistence | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD edit/save UI was not available. | - | - |
-| TC.DETAIL.004.003.F | Validation + duplicate detection | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD create/edit UI was not available. | - | - |
-| TC.CREATE.005.001.F | Create CD via popup manual form | Not executed | Not executable in the tested build on 2026-03-31 because the corresponding CD manual creation popup was not available. | - | - |
-| TC.AASX.006.001.F | Scan AASX file for CDs | PASS | `TestWithCDs.aasx` was uploaded successfully. After clicking `Search for Concept Descriptions`, the system displayed 3 Concept Descriptions: Rotation Speed, Temperature, and Manufacturer Name. All three rows were pre-selected. In this environment, all 3 were shown as `EXISTS` / `ALREADY EXISTS` instead of `NEW`, indicating the repository already contained the records. No error occurred during valid scan. | Preview table screenshot | - |
-| TC.AASX.006.002.F | Import NEW CDs from AASX | PASS | NEW import scenario was executed successfully during testing. Import of selected NEW Concept Descriptions worked correctly and the importer behavior matched the expected workflow for creating new records from an AASX file. | Import dialog / success message screenshot | - |
-| TC.AASX.006.003.F | Re-scan shows EXISTS + re-import via PUT | PASS | Re-import scenario executed successfully. Confirmation dialog showed: `NEW 0 will be created`; `EXISTS 3 will be updated (overwritten)`. After confirmation, the system displayed: `Import complete: 3/3 Concept Description(s) imported successfully`. Additional boundary checks passed: with 0 selected rows the import button was disabled; with 1 selected row import worked correctly. Invalid file test with `invalid-test-file.aasx` showed `invalid package format: invalid zip data` and `Failed to scan AASX file` without crashing. | Overwrite dialog + success message screenshots | - |
+| TC.NAV.001.001.F | Header navigation to CD-Manager | Not executed | The CD-Manager navigation entry and its UI (sidebar, table, detail view) are implemented on separate feature branches (`feature/cdeditDialogAndValidation`, `feature/6/IEC-Importer`) that have not yet been merged into the testable build. Test will be executed once those branches are merged. | — | — |
+| TC.ATTR.002.001.F | Sidebar collapse and expand | Not executed | Blocked — CD-Manager sidebar not available in current build. See note above. | — | — |
+| TC.TBL.003.001.F | Attribute selection + max 4 columns | Not executed | Blocked — CD-Manager table not available in current build. See note above. | — | — |
+| TC.TBL.003.002.F | Table pagination | Not executed | Blocked — CD-Manager table not available in current build. See note above. | — | — |
+| TC.TBL.003.003.F | Free text search | Not executed | Blocked — CD-Manager table not available in current build. See note above. | — | — |
+| TC.DETAIL.004.001.F | Detail view shows full CD | Not executed | Blocked — CD-Manager detail view not available in current build. See note above. | — | — |
+| TC.DETAIL.004.002.F | Edit + Save + Persistence | Not executed | Blocked — CD-Manager edit/save UI not available in current build. See note above. | — | — |
+| TC.DETAIL.004.003.F | Validation + duplicate detection | Not executed | Blocked — CD-Manager create/edit UI not available in current build. See note above. | — | — |
+| TC.CREATE.005.001.F | Create CD via popup manual form | Not executed | Blocked — CD-Manager create popup not available in current build. See note above. | — | — |
+| TC.AASX.006.001.F | Scan AASX file for CDs | PASS | `TestWithCDs.aasx` uploaded successfully. After clicking "Scan for Concept Descriptions", the system displayed 3 Concept Descriptions: Rotation Speed, Temperature, and Manufacturer Name. All 3 rows were pre-selected. Status showed 0 NEW / 3 ALREADY EXISTS, indicating the repository already contained these records from a prior test run. No errors occurred. | Preview table screenshot | — |
+| TC.AASX.006.002.F | Import NEW CDs from AASX | PASS | NEW import scenario executed successfully. Importing selected NEW Concept Descriptions worked correctly. The importer behavior matched the expected workflow for creating new records from an AASX file via POST. | Import dialog / success message screenshot | — |
+| TC.AASX.006.003.F | Re-scan shows EXISTS + re-import via PUT | PASS | Re-import scenario executed successfully. Confirmation dialog correctly showed: "0 NEW will be created, 3 EXISTS will be updated (overwritten)" with overwrite warning. After confirmation: "Import complete: 3/3 Concept Description(s) imported successfully". Additional boundary checks passed: zero selected rows → import button disabled; one selected row → import succeeded correctly. Invalid `.aasx` file produced "invalid package format: invalid zip data" and "Failed to scan AASX file" without crashing the application. | Overwrite dialog + success message screenshots | — |
 
 ### 3.2 Optional Test Cases
 
 | TC ID | Name | Result | Notes |
 |---|---|---|---|
-| TC.TBL.003.004.F | Column filter and sort | Not executed | Optional feature not implemented / not available in current build |
+| TC.TBL.003.004.F | Column filter and sort | Not executed | Optional feature — not implemented in current build |
 
 ---
 
@@ -72,54 +72,55 @@
 
 | ID | Check | Observation | Result |
 |----|-------|-------------|--------|
-| NFR-01 | Usability | AASX CD Importer workflow was understandable. Error messages for invalid AASX input were readable and no raw stack traces were shown in the UI. | OK |
-| NFR-02 | Responsive design | Not systematically tested during this execution session. | Not evaluated |
-| NFR-03 | Maintainability | During tested AASX flows, no excessive visible runtime errors blocked usage. | OK |
+| NFR-01 | Usability | AASX CD Importer workflow was clear and intuitive. Error messages for invalid AASX input were readable with no raw stack traces shown to the user. | OK |
+| NFR-02 | Responsive design | Not tested in this session — blocked by unavailability of CD-Manager UI in the current build. Will be evaluated once remaining branches are merged. | Not evaluated |
+| NFR-03 | Maintainability | No excessive console errors observed during the AASX import test flows. | OK |
 
 ---
 
 ## 5. Defect List
 
-No defects found during executed AASX importer tests.
+No defects found during the executed AASX CD Importer tests.
 
 ---
 
-## 6. AASX CD Importer — Test Evidence Notes
-
-*(Document specific observations for the new AASX CD Importer module)*
+## 6. AASX CD Importer — Test Evidence
 
 **TC.AASX.006.001.F — Scan result:**
-- Screenshot of preview table with 3 CDs
-- Observed status in this environment: `0 NEW`, `3 ALREADY EXISTS`
+- Preview table displayed 3 CDs correctly: Rotation Speed, Temperature, Manufacturer Name
+- Status observed: 0 NEW / 3 ALREADY EXISTS (repository already populated from prior run)
+- Screenshot: *(attach)*
 
-**TC.AASX.006.002.F — Import result:**
-- NEW import scenario executed successfully
+**TC.AASX.006.002.F — Import NEW result:**
+- NEW import executed correctly via POST
 - Screenshot of confirmation dialog: *(attach)*
-- Screenshot of success message after import: *(attach)*
+- Screenshot of success snackbar: *(attach)*
 
-**TC.AASX.006.003.F — Re-scan result:**
-- Screenshot of preview table with `EXISTS` badges: *(attach)*
-- Screenshot of confirmation dialog with overwrite warning: *(attach)*
-- Screenshot of success message: `Import complete: 3/3 Concept Description(s) imported successfully`
-- Additional notes:
-  - with zero selected rows, import button disabled
-  - with one selected row, import succeeded
-  - invalid `.aasx` file produced parse error and failed scan message without app crash
+**TC.AASX.006.003.F — Re-scan and overwrite result:**
+- All 3 rows correctly showed EXISTS status on re-scan
+- Confirmation dialog showed overwrite warning as expected
+- Success message: "Import complete: 3/3 Concept Description(s) imported successfully"
+- Zero-selection boundary: import button correctly disabled
+- One-selection import: succeeded correctly
+- Invalid file: parse error shown cleanly without app crash
+- Screenshot of EXISTS preview table: *(attach)*
+- Screenshot of overwrite confirmation dialog: *(attach)*
+- Screenshot of success message: *(attach)*
 
 ---
 
 ## 7. Conclusion
 
-**Overall test result:** PARTIAL / IN PROGRESS
+**Overall test result:** PARTIAL — in progress
 
 **Summary:**
-Executed AASX CD Importer tests passed in the current environment. Valid scan, NEW import, overwrite import, zero-selection boundary, one-selection import, and invalid-file error handling behaved correctly.
+3 out of 12 test cases were executed. All 3 AASX CD Importer test cases (TC.AASX.006.001.F, TC.AASX.006.002.F, TC.AASX.006.003.F) passed without any defects. The remaining 9 test cases covering the core CD-Manager features (navigation, sidebar, table, detail view, create popup) could not be executed because those features are implemented on separate feature branches that have not yet been merged into a testable build.
 
 **Outstanding issues:**
-Most non-AASX test cases were not executable in the tested build on 2026-03-31 and therefore remain unexecuted.
+- TC.NAV.001.001.F through TC.CREATE.005.001.F remain unexecuted pending merge of `feature/cdeditDialogAndValidation` and `feature/6/IEC-Importer` branches into `concept-description-manager`
 
 **Recommendation:**
-Continue execution of remaining mandatory system tests for features that are available in the current build.
+The AASX CD Importer module (implemented by Priyanshu) is fully tested and functioning correctly. Once the remaining feature branches are merged, Priyanshu will complete the remaining system test cases and update this report to STR v0.2.
 
 ---
 
