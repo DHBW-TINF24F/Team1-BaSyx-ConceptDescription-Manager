@@ -1,9 +1,9 @@
-# TINF24F_1-STP-0v2 — System Test Plan (STP)
+# TINF24F_1-STP-0v3 — System Test Plan (STP)
 **Project:** BaSyx ConceptDescription-Plugin (CD-Manager)
 **Team:** Team 1
 **Role owner:** Priyanshu (Test Manager)
-**Date:** 2026-03-31
-**Status:** v0.2 — Revised to professor's standard format
+**Date:** 2026-04-30
+**Status:** v0.3 — Final pre-execution test scope; AASX negative case added
 
 ---
 
@@ -13,6 +13,7 @@
 |---------|------------|-----------|-------|
 | 0.1     | 2026-02-14 | Priyanshu | Initial draft |
 | 0.2     | 2026-03-31 | Priyanshu | Revised: professor's TC naming format, tabular test case layout, Äquivalenzklassenanalyse, Grenzwertanalyse, separated test data tables, AASX CD Importer test cases added |
+| 0.3     | 2026-04-30 | Priyanshu | Clarified individual contribution boundary; added IEC black-box test cases; added AASX negative test case and corrected AASX traceability wording |
 
 ---
 
@@ -22,7 +23,17 @@ This System Test Plan (STP) describes how the CD-Manager plugin is tested at the
 
 ---
 
-## 2. System Under Test (SUT)
+## 2. Contribution Boundary
+
+Priyanshu's individual contribution for grading is split clearly:
+
+- **Implemented and documented by Priyanshu:** AASX CD Importer module and AASX CD Importer MOD.
+- **Tested by Priyanshu as Test Manager:** CD-Manager core behavior, AASX CD Importer, IEC Importer, repository connectivity, validation, and error handling.
+- **Implemented by another team member:** IEC Importer. Priyanshu tests the integrated behavior from the user perspective and documents the result in the STR, but does not claim IEC implementation or IEC module documentation ownership.
+
+---
+
+## 3. System Under Test (SUT)
 
 - **SUT:** CD-Manager plugin inside BaSyx AAS Web UI
 - **Backend:** Eclipse BaSyx ConceptDescription Repository (cd-repo)
@@ -32,13 +43,14 @@ This System Test Plan (STP) describes how the CD-Manager plugin is tested at the
   - §3 Data table (pagination, free text search, max 4 columns)
   - §4 Detail view (view, edit, save, validation, duplicate detection)
   - §5 Create CD via popup — manual form (required)
-  - §6-AASX AASX CD Importer — new Semester 4 module (Priyanshu)
+  - §5-AASX AASX CD Importer — Semester 4 file-import module implemented by Priyanshu; extends the SRS §5 import area
+  - §7-IEC IEC Importer — integrated Semester 4 module implemented by another team member; tested here as black-box system behavior
 
 ---
 
-## 3. Test Scope
+## 4. Test Scope
 
-### 3.1 In Scope (required features)
+### 4.1 In Scope (required features)
 - Header navigation to CD-Manager
 - Sidebar collapse/expand and attribute selection
 - Max 4 columns boundary enforcement
@@ -46,24 +58,27 @@ This System Test Plan (STP) describes how the CD-Manager plugin is tested at the
 - Detail view: full CD display, edit mode, save, persistence after reload
 - Validation: required fields; duplicate detection
 - Create CD via manual form
-- AASX CD Importer: scan, import NEW, re-import EXISTS
+- AASX CD Importer: scan, import NEW, re-import EXISTS, invalid/empty input handling
+- IEC Importer: valid file import, invalid/non-IEC file handling, mapping preview, save to CD Repository, missing repository configuration
 
-### 3.2 Out of Scope
+### 4.2 Out of Scope
 - Column filter/sort per column (SRS §3 — optional, not implemented)
 - File drag-and-drop import (SRS §5 — optional)
 - Clone full CD repository (SRS §6 — optional)
+- IEC Importer development work and IEC module documentation, because this module is owned by another team member
+- Direct IEC-CDD URL import implementation. The current integrated IEC Importer supports local file upload for IEC datasets; this deviation from the original URL-based project objective is documented as a system-test observation if relevant during execution.
 
 ---
 
-## 4. Test Strategy
+## 5. Test Strategy
 
 **Primary strategy:** Requirements-based testing (Anforderungsbasiert) — mandatory minimum per professor's guidelines.
 
-All test cases are derived directly from SRS requirements. Every SRS section has at least one corresponding test case (see Traceability Matrix, Section 11).
+All test cases are derived directly from SRS requirements and the Team 1 project objective. Every required SRS section has at least one corresponding test case (see Traceability Matrix, Section 15).
 
 ---
 
-## 4a. Äquivalenzklassenanalyse
+## 5a. Äquivalenzklassenanalyse
 
 Equivalence classes are identified for key input dimensions. Each class is covered by at least one test case.
 
@@ -73,12 +88,14 @@ Equivalence classes are identified for key input dimensions. Each class is cover
 | Free text search (TC.TBL.003.003.F) | Known substring match, exact match | Empty string (no change to results) |
 | Required field validation (TC.DETAIL.004.003.F) | All mandatory fields filled | One mandatory field empty, all fields empty |
 | Duplicate detection (TC.DETAIL.004.003.F) | Unique `idShort` | Same `idShort` as existing CD |
-| AASX scan input (TC.AASX.006.001.F) | Valid `.aasx` file containing ≥1 CD | Valid `.aasx` with 0 CDs; corrupted/non-AASX file |
+| AASX scan input (TC.AASX.006.001.F, TC.AASX.006.004.F) | Valid `.aasx` file containing ≥1 CD | Valid `.aasx` with 0 CDs; corrupted/non-AASX file |
 | AASX import selection (TC.AASX.006.002.F) | All rows selected, partial selection | Zero rows selected (import button must be disabled) |
+| IEC file input (TC.IEC.007.001.F, TC.IEC.007.002.F) | Valid IEC data file with IRDI/code and preferred name | File with unsupported/no IEC fields |
+| IEC repository save (TC.IEC.007.003.F) | CD Repository URL configured | CD Repository URL missing or empty |
 
 ---
 
-## 4b. Grenzwertanalyse
+## 5b. Grenzwertanalyse
 
 Boundary values are tested for numeric and range-bounded inputs.
 
@@ -88,12 +105,13 @@ Boundary values are tested for numeric and range-bounded inputs.
 | Table pagination | Page 1 (no previous page) | Last page (no next page) |
 | AASX CD count | 1 CD in package | 0 CDs → shows error message "No Concept Descriptions found" |
 | Edit save activation | No changes (Save disabled) | Any single field change → Save button appears |
+| IEC property count | 1 IEC property (minimum useful import) | 0 valid IEC properties → validation warning and no save workflow |
 
 ---
 
-## 5. Test Environment
+## 6. Test Environment
 
-### 5.1 Setup
+### 6.1 Setup
 
 | Component | Details |
 |---|---|
@@ -102,7 +120,7 @@ Boundary values are tested for numeric and range-bounded inputs.
 | Frontend | Team1-basyx-aas-web-ui, `npm run dev`, URL: `http://localhost:3000` |
 | Backend | BaSyx cd-repo via Docker Compose, URL: `http://localhost:8081` |
 
-### 5.2 Preconditions Checklist
+### 6.2 Preconditions Checklist
 
 1. Start backend: `cd development/setupFiles && docker compose up -d`
 2. Confirm healthy: `docker ps` shows cd-repo container as running
@@ -112,21 +130,21 @@ Boundary values are tested for numeric and range-bounded inputs.
 
 ---
 
-## 6. Entry and Exit Criteria
+## 7. Entry and Exit Criteria
 
-### 6.1 Entry Criteria
+### 7.1 Entry Criteria
 - Backend container running and healthy
 - Frontend loads without critical errors
 - CD-Manager view opens from navigation
 
-### 6.2 Exit Criteria
-- All required test cases executed (TC.NAV through TC.AASX)
+### 7.2 Exit Criteria
+- All required test cases executed (TC.NAV through TC.IEC)
 - All results documented in STR with Pass/Fail and evidence
 - All critical/major bugs either fixed and re-tested, or documented with impact
 
 ---
 
-## 7. Test Data
+## 8. Test Data
 
 ### TD.001 — Standard CDs for create and duplicate tests
 
@@ -146,17 +164,26 @@ Boundary values are tested for numeric and range-bounded inputs.
 
 | Dataset | File | Expected |
 |---------|------|----------|
-| 01 | Valid `.aasx` with empty `conceptDescriptions: []` | Error message: no CDs found |
-| 02 | A non-AASX file (e.g., `.json` renamed to `.aasx`) | Parse error shown |
+| 01 | `invalid-test-file.aasx` in `examples/CombinedExample/Infrastructure1/aas/` | Parse error shown; importer does not crash |
+| 02 | Valid `.aasx` with empty `conceptDescriptions: []` if available during execution | Error message: no CDs found |
+
+### TD.004 — IEC Importer test data
+
+These data sets are used only for black-box testing of the integrated IEC Importer. They do not imply implementation ownership.
+
+| Dataset | File/content | Expected |
+|---------|--------------|----------|
+| 01 | `PROJECT/STP/test-data/iec-valid-property.csv` with `IRDI = 0112/2///61360_7#AAE664#007`, `PreferredName = Rated voltage`, `Unit = V`, `DataType = REAL_MEASURE_TYPE` | Valid IEC property detected; data type mapped to `REAL_MEASURE`; property can be saved as ConceptDescription |
+| 02 | `PROJECT/STP/test-data/iec-invalid-property.csv` with headers `Name,Value` and no IRDI/code IEC field | Validation warning; no valid IEC-CDD properties extracted |
 
 ---
 
-## 8. Defect Management
+## 9. Defect Management
 
 Defects found during system test are created as GitHub Issues:
 
 - **Title format:** `[BUG] <short description>`
-- **Labels:** `bug`, `system-test`, plus area label (`ui`, `cd-repo`, `aasx-importer`)
+- **Labels:** `bug`, `system-test`, plus area label (`ui`, `cd-repo`, `aasx-importer`, `iec-importer`)
 - **Severity levels:**
   - Critical: system unusable / data corruption
   - Major: main feature broken (CRUD/import)
@@ -165,7 +192,7 @@ Defects found during system test are created as GitHub Issues:
 
 ---
 
-## 9. Test Cases — CD-Manager Core Features
+## 10. Test Cases — CD-Manager Core Features
 
 ---
 
@@ -221,8 +248,8 @@ Defects found during system test are created as GitHub Issues:
 | 3 | Attempt to select a 5th attribute | 5th selection is prevented (checkbox disabled, toast shown, or auto-deselect) |
 | 4 | Deselect one attribute | Column disappears; 4th checkbox becomes selectable again |
 
-**Equivalence classes applied:** see Section 4a — Column count classes.
-**Boundary applied:** see Section 4b — Column count boundary (4 max, 5 rejected).
+**Equivalence classes applied:** see Section 5a — Column count classes.
+**Boundary applied:** see Section 5b — Column count boundary (4 max, 5 rejected).
 
 ---
 
@@ -244,7 +271,7 @@ Defects found during system test are created as GitHub Issues:
 | 3 | Click "Previous page" control | First page content returns |
 | 4 | Navigate to last page | No "Next" button or it is disabled |
 
-**Boundary applied:** see Section 4b — Pagination boundaries.
+**Boundary applied:** see Section 5b — Pagination boundaries.
 
 ---
 
@@ -266,7 +293,7 @@ Defects found during system test are created as GitHub Issues:
 | 3 | Clear the search field | Full list restored |
 | 4 | Search for `TC_Width` | Only `TC_Width_CD` is shown |
 
-**Equivalence classes applied:** see Section 4a — Free text search classes.
+**Equivalence classes applied:** see Section 5a — Free text search classes.
 
 ---
 
@@ -308,7 +335,7 @@ Defects found during system test are created as GitHub Issues:
 | 5 | Click Save | Success feedback shown; no error |
 | 6 | Reload the browser (F5) and reopen the same CD | `displayName (en)` still shows `Length-Edited` |
 
-**Boundary applied:** see Section 4b — Save activation boundary.
+**Boundary applied:** see Section 5b — Save activation boundary.
 
 ---
 
@@ -338,7 +365,7 @@ Defects found during system test are created as GitHub Issues:
 | 1 | Create a CD with `idShort = TC_Length_CD` (TD.001 Dataset 01) | CD created successfully |
 | 2 | Attempt to create a second CD with same `idShort = TC_Length_CD` (TD.001 Dataset 03) | Duplicate detected; system prevents silent overwrite or shows conflict dialog |
 
-**Equivalence classes applied:** see Section 4a — Required field and duplicate classes.
+**Equivalence classes applied:** see Section 5a — Required field and duplicate classes.
 
 ---
 
@@ -364,7 +391,7 @@ Defects found during system test are created as GitHub Issues:
 
 ---
 
-## 10. Test Cases — AASX CD Importer (Semester 4 Module)
+## 11. Test Cases — AASX CD Importer (Semester 4 Module Implemented by Priyanshu)
 
 ---
 
@@ -374,7 +401,7 @@ Defects found during system test are created as GitHub Issues:
 |-------|-------|
 | **Test case ID** | TC.AASX.006.001.F |
 | **Name** | Scan AASX file and display CD preview table |
-| **Req.-ID** | SRS.§6-AASX |
+| **Req.-ID** | SRS.§5 import area / Semester 4 AASX module |
 | **Description** | This testcase verifies that uploading a valid AASX file and clicking Scan correctly extracts all Concept Descriptions and displays them in the preview table with correct status badges. |
 
 **Test data:** TD.002 — `TestWithCDs.aasx` (3 CDs: Rotation Speed, Temperature, Manufacturer Name).
@@ -389,8 +416,8 @@ Defects found during system test are created as GitHub Issues:
 | 6 | Observe summary banner | Shows "3 Concept Description(s) found: 3 NEW, 0 ALREADY EXISTS" |
 | 7 | Confirm all checkboxes are pre-selected | All 3 rows are checked by default |
 
-**Equivalence classes applied:** see Section 4a — AASX scan input (valid file with CDs).
-**Boundary applied:** see Section 4b — AASX CD count.
+**Equivalence classes applied:** see Section 5a — AASX scan input (valid file with CDs).
+**Boundary applied:** see Section 5b — AASX CD count.
 
 ---
 
@@ -400,7 +427,7 @@ Defects found during system test are created as GitHub Issues:
 |-------|-------|
 | **Test case ID** | TC.AASX.006.002.F |
 | **Name** | Import all NEW Concept Descriptions via POST |
-| **Req.-ID** | SRS.§6-AASX |
+| **Req.-ID** | SRS.§5 import area / Semester 4 AASX module |
 | **Description** | This testcase verifies that selected NEW CDs from a scanned AASX file are successfully imported into the CD Repository via POST, and that the result summary reports correct counts. |
 
 **Precondition:** TC.AASX.006.001.F has been executed; scan result shows 3 NEW CDs; all rows selected.
@@ -423,7 +450,7 @@ Defects found during system test are created as GitHub Issues:
 |-------|-------|
 | **Test case ID** | TC.AASX.006.003.F |
 | **Name** | Re-scan after import shows EXISTS; re-import updates via PUT |
-| **Req.-ID** | SRS.§6-AASX |
+| **Req.-ID** | SRS.§5 import area / Semester 4 AASX module |
 | **Description** | This testcase verifies that scanning the same AASX file after a successful import correctly identifies all CDs as already existing (EXISTS), and that re-importing them updates the repository via PUT without errors. |
 
 **Precondition:** TC.AASX.006.002.F has been executed; 3 CDs are in the repository.
@@ -441,7 +468,118 @@ Defects found during system test are created as GitHub Issues:
 
 ---
 
-## 11. Optional Test Cases (execute only if feature is present)
+### TC.AASX.006.004.F — Reject invalid or empty AASX input
+
+| Field | Value |
+|-------|-------|
+| **Test case ID** | TC.AASX.006.004.F |
+| **Name** | Reject invalid or empty AASX input |
+| **Req.-ID** | SRS.§5 import area / Semester 4 AASX module |
+| **Description** | This testcase verifies that invalid AASX input and AASX packages without Concept Descriptions are rejected with understandable feedback and without crashing the application. |
+
+**Test data:** TD.003.
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Navigate to AASX CD Importer | Importer page loads |
+| 2 | Select `invalid-test-file.aasx` from TD.003 Dataset 01 | File name is shown in picker |
+| 3 | Click "Scan for Concept Descriptions" | Scan fails gracefully |
+| 4 | Observe user feedback | Error message explains that the AASX package could not be scanned or parsed |
+| 5 | Observe UI stability | No crash, no raw stack trace shown to the user; user can select another file |
+| 6 | If an empty-CD AASX is available, scan TD.003 Dataset 02 | User receives "no Concept Descriptions found" feedback |
+
+**Equivalence classes applied:** see Section 5a — AASX scan input invalid class.
+**Boundary applied:** see Section 5b — AASX CD count.
+
+---
+
+## 12. Test Cases — IEC Importer (Integrated Module, Black-Box Testing Only)
+
+The IEC Importer was implemented by another team member. Priyanshu tests it as Test Manager from the user perspective and records the integrated system behavior in the STR.
+
+---
+
+### TC.IEC.007.001.F — Import valid IEC file and show extracted properties
+
+| Field | Value |
+|-------|-------|
+| **Test case ID** | TC.IEC.007.001.F |
+| **Name** | Import valid IEC file and show extracted properties |
+| **Req.-ID** | Team objective IEC-CDD import, CRS.UC-3 |
+| **Description** | This testcase verifies that the integrated IEC Importer accepts a valid IEC dataset file, extracts IEC-CDD properties, maps the data type to a valid AAS IEC 61360 value, and displays the result in the preview table. |
+
+**Test data:** TD.004 Dataset 01.
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Navigate to IEC Importer | IEC Importer page loads |
+| 2 | Upload the valid IEC file from TD.004 Dataset 01 | File is accepted; detected format is shown |
+| 3 | Observe validation feedback | Success message shows at least 1 IEC-CDD property found |
+| 4 | Observe the properties table | IRDI, preferred name, unit, and data type are displayed |
+| 5 | Check the data type value | `REAL_MEASURE_TYPE` is mapped/displayed as valid AAS data type `REAL_MEASURE` |
+
+**Equivalence classes applied:** see Section 5a — IEC file input.
+**Boundary applied:** see Section 5b — IEC property count.
+
+---
+
+### TC.IEC.007.002.F — Reject invalid or non-IEC file content
+
+| Field | Value |
+|-------|-------|
+| **Test case ID** | TC.IEC.007.002.F |
+| **Name** | Reject invalid or non-IEC file content |
+| **Req.-ID** | Team objective IEC-CDD import, CRS.UC-3 |
+| **Description** | This testcase verifies that invalid or non-IEC file content is not silently accepted and that the user receives understandable validation feedback. |
+
+**Test data:** TD.004 Dataset 02.
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Navigate to IEC Importer | IEC Importer page loads |
+| 2 | Upload the invalid/non-IEC file from TD.004 Dataset 02 | File is read but IEC validation fails |
+| 3 | Observe validation feedback | Warning states that the data does not match the IEC-CDD format |
+| 4 | Observe the save action | "Save as Concept Descriptions" is not offered or cannot be used |
+| 5 | Check the UI stability | No crash, no raw stack trace shown to the user |
+
+**Equivalence classes applied:** see Section 5a — IEC file input invalid class.
+
+---
+
+### TC.IEC.007.003.F — Save IEC properties to CD Repository and handle missing repository URL
+
+| Field | Value |
+|-------|-------|
+| **Test case ID** | TC.IEC.007.003.F |
+| **Name** | Save IEC properties to CD Repository and handle missing repository URL |
+| **Req.-ID** | Team objective IEC-CDD import, CRS.UC-3 |
+| **Description** | This testcase verifies that valid IEC properties can be saved as ConceptDescriptions when the CD Repository is configured, and that a missing repository URL is reported clearly. |
+
+**Test data:** TD.004 Dataset 01.
+
+**Part A — Missing repository URL:**
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Clear the CD Repository URL in infrastructure settings | Repository URL is empty |
+| 2 | Upload TD.004 Dataset 01 in IEC Importer | Valid IEC property preview is shown |
+| 3 | Click "Save as Concept Descriptions" | Error message explains that the Concept Description Repository URL is not configured |
+
+**Part B — Configured repository URL:**
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Set CD Repository URL to `http://localhost:8081` | Repository URL is configured |
+| 2 | Upload TD.004 Dataset 01 again | Valid IEC property preview is shown |
+| 3 | Click "Save as Concept Descriptions" | Success message shows created or updated count |
+| 4 | Search for the IRDI from TD.004 Dataset 01 in CD-Manager | Saved ConceptDescription is visible in the repository |
+| 5 | Save the same IEC property a second time | Existing CD is updated rather than duplicated |
+
+**Equivalence classes applied:** see Section 5a — IEC repository save.
+
+---
+
+## 13. Optional Test Cases (execute only if feature is present)
 
 ### TC.TBL.003.004.F (Optional) — Column filter and sort
 
@@ -459,7 +597,7 @@ Defects found during system test are created as GitHub Issues:
 
 ---
 
-## 12. Non-Functional Checks
+## 14. Non-Functional Checks
 
 These are observations noted during test execution, not formal pass/fail test cases.
 
@@ -471,26 +609,27 @@ These are observations noted during test execution, not formal pass/fail test ca
 
 ---
 
-## 13. Traceability Matrix (SRS → Test Cases)
+## 15. Traceability Matrix (Requirements → Test Cases)
 
-| SRS Section | Topic | Test Cases |
+| Requirement source | Topic | Test Cases |
 |---|---|---|
 | SRS.§1 | Header navigation | TC.NAV.001.001.F |
 | SRS.§2 | Attribute selector + collapse | TC.ATTR.002.001.F, TC.TBL.003.001.F |
 | SRS.§3 | Table: pagination + search + max 4 cols | TC.TBL.003.001.F, TC.TBL.003.002.F, TC.TBL.003.003.F |
 | SRS.§4 | Detail view + edit + save + validation | TC.DETAIL.004.001.F, TC.DETAIL.004.002.F, TC.DETAIL.004.003.F |
 | SRS.§5 | Create CD (required part) | TC.CREATE.005.001.F |
-| SRS.§6-AASX | AASX CD Importer (Semester 4) | TC.AASX.006.001.F, TC.AASX.006.002.F, TC.AASX.006.003.F |
+| SRS.§5 import area / Semester 4 module | AASX CD Importer | TC.AASX.006.001.F, TC.AASX.006.002.F, TC.AASX.006.003.F, TC.AASX.006.004.F |
+| Team objective / CRS.UC-3 | IEC Importer integrated behavior | TC.IEC.007.001.F, TC.IEC.007.002.F, TC.IEC.007.003.F |
 | SRS.NFR.1 | Usability | NFR-01 |
 | SRS.NFR.2 | Responsive design | NFR-02 |
 | SRS.NFR.3 | Maintainability | NFR-03 |
 
 ---
 
-## 14. Notes
+## 16. Notes
 
 - Screenshots are sufficient evidence for UI-level test steps.
 - For backend errors, include browser console screenshot + docker logs:
   `docker compose -f development/setupFiles/docker-compose.yaml logs -f cd-repo`
-- After test execution, results are recorded in the STR (`TINF24F_1-STR-0v1.md`).
-- Bugs found during testing are filed as GitHub Issues following the format in Section 8.
+- After test execution, results are recorded in the STR (`TINF24F_1-STR-0v3.md`).
+- Bugs found during testing are filed as GitHub Issues following the format in Section 9.

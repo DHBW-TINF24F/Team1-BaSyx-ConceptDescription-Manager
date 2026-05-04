@@ -1,229 +1,124 @@
-# TINF24F_1-UTITP-0v1 — Test Plan for Unit & Integration Tests (UT/IT)
+# TINF24F_1-UTITP-0v2 — Test Plan for Unit & Integration Tests (UT/IT)
 **Project:** BaSyx ConceptDescription-Plugin (CD-Manager)  
 **Team:** Team 1  
 **Author:** Priyanshu (Software Tester / Test Manager)  
-**Date:** 2026-02-14  
-**Status:** v0.1 (planning phase, no implementation yet)
+**Date:** 2026-04-29
+**Status:** v0.2 — updated with existing automated test coverage as supporting evidence
 
 ---
 
-## 0. Why this document exists (Issue alignment)
-This document is created to fulfill the issue requirement:
+## Version Control
 
-**Ziel:** Testplan für Unit- und Integrationstests erstellen  
-**Aufgaben:**
-1) overview of which components/modules are needed and developed  
-2) for each module write test cases  
-3) for implementing tests, search the Eclipse BaSyx (our web UI repo) for existing tests and align with them
-
-This is a **plan only** (first version). Implementation can follow later if needed.
+| Version | Date | Author | Notes |
+|---|---|---|---|
+| 0.1 | 2026-02-14 | Priyanshu | Initial UT/IT planning document |
+| 0.2 | 2026-04-29 | Priyanshu | Updated after branch integration; maps existing automated tests to tester evidence without claiming implementation ownership |
 
 ---
 
-## 1. Test levels (short + practical)
-### 1.1 Unit tests
-- test single functions/composables/modules in isolation
-- no real backend required
-- network calls are mocked
-- focus: correctness + edge cases
+## 1. Purpose
 
-### 1.2 Integration tests
-- test multiple parts together (e.g., composable + client, or component + composable)
-- can be done with mocked HTTP OR with a real running `cd-repo` container
-- focus: correct data flow and correct usage of the cd-repo API
+This document supports the Unit/Integration Test planning requirement. It is not a replacement for the STP/STR. The lecturer-facing system test evidence remains documented in the STP and STR.
 
-*(System tests are planned separately in STP/STR for lecturer artifacts.)*
+Priyanshu's role boundary:
+
+- **Implemented/documented by Priyanshu:** AASX CD Importer and its MOD.
+- **Managed/tested by Priyanshu:** system test planning, traceability, execution evidence, defect reporting.
+- **IEC Importer:** implemented by another team member; Priyanshu uses available automated tests and manual black-box tests as Test Manager evidence only.
 
 ---
 
-## 2. Existing tests in our BaSyx Web UI repo (required by issue)
-### 2.1 What I checked
-In the frontend repo (`Team1-basyx-aas-web-ui/aas-web-ui`) tests already exist under:
+## 2. Test Levels
 
-- `tests/`
-
-Example test files currently present:
-- `tests/composables/AAS/ReferableUtils.test.ts`
-- `tests/composables/IDUtils.test.ts`
-- `tests/utils/StringUtils.test.ts`
-- `tests/utils/ObjectUtils.test.ts`
-- `tests/utils/ObjectUtils.test.ts`
-- `tests/utils/AAS/SemanticIdUtils.test.ts`
-
-### 2.2 Conclusion (how we align)
-- existing naming convention: `*.test.ts`
-- test focus currently: **utils** and **composables**
-- the project uses **Vitest** (confirmed in `package.json`), plus `@testing-library/vue` is available if we later want component tests
-
-So for our CD-Manager tests:
-- we will first write tests for **client + composable logic**, because that matches the existing repo style.
-- component tests are optional and only planned for critical flows.
+| Level | Purpose | Backend needed | Evidence use |
+|---|---|---|---|
+| Unit tests | Test functions, utilities, validators, and composables in isolation | No | Supports regression confidence |
+| Integration tests | Test cooperation between composables, clients, routing, and data transformation logic | Usually mocked; sometimes local backend | Supports module integration confidence |
+| System tests | Test complete user workflows through the Web UI | Yes | Main lecturer deliverable in STP/STR |
 
 ---
 
-## 3. Overview: components/modules needed + developed (Issue task #1)
-Based on repo search (real paths), ConceptDescription related code is mainly here:
+## 3. Existing Automated Tests in the Web UI Repo
 
-### 3.1 Client / API layer
-- `src/composables/Client/CDRepositoryClient.ts`  
-Purpose: communication with the ConceptDescription Repository (`cd-repo`) for list/get/create/update/delete.
+The project uses **Vitest** and follows the existing `*.test.ts` convention under `aas-web-ui/tests/`.
 
-### 3.2 ConceptDescription logic layer
-- `src/composables/AAS/ConceptDescriptionHandling.ts`  
-Purpose: logic around ConceptDescriptions (fetching, mapping, formatting helpers).  
-Evidence: referenced in multiple places like `SubmodelElements/Property.ts` and `SMEHandling.ts`.
+Relevant current test areas:
 
-### 3.3 UI components related to CDs (for later integration tests)
-- `src/components/UIComponents/ConceptDescription.vue`
-- `src/components/UIComponents/DescriptionElement.vue`
-- `src/components/UIComponents/DescriptionTooltip.vue`
-- `src/components/UIComponents/GenericDataTableView.vue`
+| Area | Example test files | Tester interpretation |
+|---|---|---|
+| AASX import | `tests/composables/AAS/AASXCdImport.test.ts`, `AASXImport.test.ts`, `AASXPackaging.test.ts` | Supports Priyanshu's owned AASX importer module |
+| IEC import validation | `tests/composables/IecCddValidator.test.ts`, `IecFileImport.test.ts` | Supports integrated IEC Importer testing; implementation ownership remains with teammate |
+| Repository/request behavior | `tests/composables/RequestHandling.test.ts`, `SMRepositoryClient.test.ts`, `DescriptorSync.test.ts` | Supports backend/client reliability checks |
+| Routing/module integration | `tests/router/moduleRouteManifest.test.ts` | Supports module registration/navigation confidence |
+| Semantic and AAS utilities | `tests/utils/AAS/SemanticIdUtils.test.ts`, `DescriptorUtils.test.ts`, `SubmodelElementPathUtils.test.ts` | Supports AAS/IEC semantic ID behavior |
+| UI/component utilities | `tests/components/SubmodelElements/*.test.ts` | Supports existing UI behavior around submodel elements |
 
-### 3.4 Plugin system usage
-- concept descriptions are supported via plugin mechanism (example reference found):
-  - `src/UserPlugins/HelloWorldPlugin.vue` mentions `withConceptDescriptions`
+These tests are used as supporting evidence for quality assurance. This document does not claim Priyanshu authored every existing automated test.
 
 ---
 
-## 4. Test scope (UT/IT)
-### 4.1 In scope
-- correctness of cd-repo client behavior (request + error handling)
-- ConceptDescriptionHandling logic correctness (no crashes, correct formatting/mapping)
-- basic validation and duplicate logic if implemented in CD-Manager code
-- minimal integration tests between client + handling (+ optionally one component)
+## 4. UT/IT Scope for the Final Submission
 
-### 4.2 Out of scope (for this UT/IT plan)
-- full browser E2E automation (not required by issue, and no cypress/playwright found yet)
-- load/performance testing
-- security testing beyond basic error handling
+In scope:
 
----
+- Run the existing automated test suite before final STR update.
+- Record command results in the STR.
+- Use automated tests as supporting evidence for AASX import, IEC data validation, routing, and repository/client behavior.
+- Document failures as defects or risks instead of silently changing application code.
 
-## 5. Unit test cases per module (Issue task #2)
-> Unit tests should be fast and run without docker/backend.
+Out of scope for Priyanshu:
 
-### Module A — CDRepositoryClient (`src/composables/Client/CDRepositoryClient.ts`)
-**Planned UT test cases:**
-- **UT-A1:** List ConceptDescriptions returns parsed data (happy path)
-- **UT-A2:** List supports pagination parameters (if cursor/page params exist)
-- **UT-A3:** Get single CD by id (happy path)
-- **UT-A4:** Create CD sends correct payload / method
-- **UT-A5:** Update CD sends correct payload / method
-- **UT-A6:** Delete CD calls correct endpoint and handles 404
-- **UT-A7:** Error handling: backend returns non-OK (e.g., 500) → function throws/returns controlled error
-
-**Mocking plan:** mock `fetch` (or the used http layer) using Vitest mocks.
-
-**Planned test file location (aligned to repo):**
-- `tests/composables/Client/CDRepositoryClient.test.ts`
+- Implementing IEC Importer code.
+- Writing IEC module documentation.
+- Fixing application defects without separate approval.
+- Replacing system tests with unit tests. The professor's minimum strategy remains requirements-based system testing.
 
 ---
 
-### Module B — ConceptDescriptionHandling (`src/composables/AAS/ConceptDescriptionHandling.ts`)
-**Planned UT test cases:**
-- **UT-B1:** Composable returns expected public API (sanity check)
-- **UT-B2:** Handles empty list / undefined input safely (no crash)
-- **UT-B3:** Formatting/mapping helpers return stable output for minimal CD object
-- **UT-B4:** Unit/symbol helper returns expected suffix (if function exists, used in Property.ts)
-- **UT-B5:** If it fetches CDs via client: correct behavior when client returns 0 CDs and >0 CDs (client mocked)
+## 5. Commands
 
-**Planned test file location:**
-- `tests/composables/AAS/ConceptDescriptionHandling.test.ts`
+Run from:
 
----
+```bash
+cd Team1-basyx-aas-web-ui/aas-web-ui
+```
 
-### Module C — UI helper logic (only if extracted)
-If CD-Manager validation or duplicate detection exists as separate helpers (utils), we test it as utils.
+Final evidence commands:
 
-**Planned UT test cases:**
-- **UT-C1:** Required-field validation fails if idShort empty/whitespace
-- **UT-C2:** Required-field validation passes with minimal valid data
-- **UT-C3:** Duplicate detection returns true when idShort already exists
-- **UT-C4:** Duplicate detection returns false when unique
+```bash
+npm run lint:check
+npm run test:run
+npm run type-check
+npm run build
+```
 
-**Planned test file location:**
-- `tests/utils/CDManager/ValidationUtils.test.ts`
-- `tests/utils/CDManager/DuplicateUtils.test.ts`
-
-*(If validation is only inside components, we will do a small component test instead of utils test.)*
+The result of each command is recorded in the STR with date, branch, and commit hash.
 
 ---
 
-## 6. Integration test cases (Issue task #2)
-> Integration tests combine multiple parts. We keep them minimal (MVP).
+## 6. Evidence Mapping to STP/STR
 
-### IT-01 — Client + Handling (mocked HTTP)
-**Modules:** CDRepositoryClient + ConceptDescriptionHandling  
-**Idea:** mock HTTP response in client and verify handling transforms/returns correct output without errors.  
-**Expected:** correct data is passed through and helper outputs are consistent.
-
-### IT-02 — Table selection → detail view update (optional)
-**Modules:** GenericDataTableView + ConceptDescription component  
-**Idea:** render component(s) with test data and simulate selecting an entry.  
-**Expected:** detail view receives correct object and displays correct fields.
-
-*(Only planned if component setup is stable; otherwise we keep integration at composable level.)*
-
-### IT-03 — Minimal real-backend integration (optional/local)
-**Precondition:** `cd-repo` container running on `http://localhost:8081`  
-**Idea:** verify one real end-to-end call set works locally:
-- list → create (TC prefix) → list contains → delete cleanup  
-**Expected:** backend persists and UI/client handles real responses.
-
-Note: This might be run locally only (depends on CI availability and stability).
+| STP/STR area | Automated support | Manual system test still required |
+|---|---|---|
+| CD-Manager core navigation/table/detail | Routing and shared component tests | Yes: Web UI workflow must be executed manually |
+| AASX CD Importer | AASX import/composable tests | Yes: scan/import/re-import/invalid file workflow |
+| IEC Importer | IEC validator/file import tests | Yes: upload valid/invalid file and save to repository |
+| Repository connectivity | Request/client-related tests | Yes: real cd-repo URL configured/missing behavior |
+| NFR checks | Lint/type-check/build support maintainability | Yes: usability, responsive layout, console errors |
 
 ---
 
-## 7. Test data strategy
-- Use unique prefixes to avoid collisions:
-  - `UT_...` for unit tests (mostly mocked anyway)
-  - `IT_...` for integration tests
-  - `TC_...` for any real-backend records
-- If we create data on real backend, we always delete it in cleanup.
+## 7. Priority Before Final Presentation
+
+1. Execute automated checks and save the summaries for STR evidence.
+2. Execute the required manual system tests from STP v0.3.
+3. Update STR v0.3 with pass/fail/blocked results and evidence references.
+4. Use only the final STR counts in the presentation.
 
 ---
 
-## 8. Where tests will live (aligned with repo)
-Because existing tests are under `tests/utils` and `tests/composables`, our plan follows the same structure:
+## 8. Notes
 
-Planned new folders/files:
-- `tests/composables/Client/CDRepositoryClient.test.ts`
-- `tests/composables/AAS/ConceptDescriptionHandling.test.ts`
-Optional (if needed):
-- `tests/utils/CDManager/ValidationUtils.test.ts`
-- `tests/utils/CDManager/DuplicateUtils.test.ts`
-- `tests/components/UIComponents/...` (only if we decide to test Vue components directly)
-
-Naming stays `*.test.ts`.
-
----
-
-## 9. How to run tests (from package.json scripts)
-Run from: `Team1-basyx-aas-web-ui/aas-web-ui`
-
-- all tests:
-  - `yarn test`
-- watch mode:
-  - `yarn test:watch`
-- coverage:
-  - `yarn test:coverage`
-- prebuild gate (recommended before merging):
-  - `yarn prebuild`
-
----
-
-## 10. Priority (realistic order)
-If we implement tests later, this is the order:
-
-1) **CDRepositoryClient tests** (UT-A) — because if API calls are wrong, everything breaks.
-2) **ConceptDescriptionHandling tests** (UT-B) — used in multiple areas (property/unit logic).
-3) **Validation + duplicates** tests (UT-C) — required by SRS for saving/creating.
-4) **Integration test IT-01** with mocked client — good sanity integration.
-5) Optional: IT-03 against real backend (local).
-
----
-
-## 11. Notes / open points
-- Optional features (sorting/filtering, file import, clone) will only get tests if they exist in implementation.
-- If we discover additional existing patterns/mocks in `tests/`, we will reuse them instead of inventing a new style.
-- A separate STP/STR (system test plan/report) is still required for the lecturer deliverables; this document only targets the UT/IT issue.
+- Automated tests improve confidence but do not replace the lecturer-required requirements-based system test.
+- Failed automated checks are reported in the STR as quality risks.
+- Any defect must reference the failing command or STP test case ID.
