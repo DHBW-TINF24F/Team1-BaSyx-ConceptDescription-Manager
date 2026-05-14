@@ -121,9 +121,9 @@
 
 Dieses Dokument beschreibt die Anforderungen an den zu implementierenden CD-Manager.
 Im Fokus steht hierbei die klare definition des Verhaltens und Funktion
-aller [Nutzeranforderungen](../CRS/TINF24F_1-CRS-7v0.md#nutzeranforderungen),
+aller [Nutzeranforderungen](../CRS/TINF24F_1-CRS-6v0.md#nutzeranforderungen),
 die in
-der [Customer Requirement Specification](../CRS/TINF24F_1-CRS-7v0.md#customer-requirement-specification-crs---basyx-conceptdescription-plugincd-manager)
+der [Customer Requirement Specification](../CRS/TINF24F_1-CRS-6v0.md#customer-requirement-specification-crs---basyx-conceptdescription-plugincd-manager)
 beschrieben werden.
 
 ### Produktumfang
@@ -152,7 +152,7 @@ werden kann.
 
 ### Referenzen
 
-- [CRS Dokument](../CRS/TINF24F_1-CRS-7v0.md)
+- [CRS Dokument](../CRS/TINF24F_1-CRS-6v0.md)
 - SAS Dokument
 
 ---
@@ -232,7 +232,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-1](../CRS/TINF24F_1-CRS-7v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern): CDs in Tabelle
+- [UC-1](../CRS/TINF24F_1-CRS-6v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern): CDs in Tabelle
   und Tabellenseiten auflisten und suchen/filtern
 
 ## FR-2 - Interaktionen auf einzelnen CDs über Ineraktions-Menü
@@ -304,7 +304,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds): Tabellen-interaktionen auf
+- [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds): Tabellen-interaktionen auf
   einzelnen CDs
 
 ## FR-3 – Detail-Ansicht für CDs
@@ -348,7 +348,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-3](../CRS/TINF24F_1-CRS-7v0.md#uc-3-detail-ansicht-für-cds): Detail-Ansicht für CDs
+- [UC-3](../CRS/TINF24F_1-CRS-6v0.md#uc-3-detail-ansicht-für-cds): Detail-Ansicht für CDs
 
 ## FR-4 – Editor-Ansicht für CDs
 
@@ -402,7 +402,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-4](../CRS/TINF24F_1-CRS-7v0.md#uc-4-editor-ansicht-für-cds): Editor-Ansicht für CDs
+- [UC-4](../CRS/TINF24F_1-CRS-6v0.md#uc-4-editor-ansicht-für-cds): Editor-Ansicht für CDs
 
 ## FR-5 – Import Funktion für CDs über AASX
 
@@ -461,7 +461,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-5](../CRS/TINF24F_1-CRS-7v0.md#uc-5-import-funktion-für-cd-über-aasx): Import Funktion für CDs über AASX
+- [UC-5](../CRS/TINF24F_1-CRS-6v0.md#uc-5-import-funktion-für-cd-über-aasx): Import Funktion für CDs über AASX
 - [FR-9](#fr-9--differenz--und-detailansicht-für-aasx-cd-import): Differenz- und Detailansicht für AASX CD Import
 
 ## FR-6 – Import Funktion für IECs als CD
@@ -514,7 +514,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-6](../CRS/TINF24F_1-CRS-7v0.md#uc-6-import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
+- [UC-6](../CRS/TINF24F_1-CRS-6v0.md#uc-6-import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
 - [NFR-1](#nfr-1--differenz--und-detailansicht-für-aasx-cd-import): Differenz- und Detailansicht für AASX CD Import
 
 ## FR-7 – Export Funktion für CDs
@@ -555,7 +555,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-7](../CRS/TINF24F_1-CRS-7v0.md#uc-7-export-funktion-für-cds): Export Funktion für CDs
+- [UC-7](../CRS/TINF24F_1-CRS-6v0.md#uc-7-export-funktion-für-cds): Export Funktion für CDs
 
 ## FR-8 – Referenzierung von CDs in SMs
 
@@ -608,7 +608,7 @@ flowchart TD
 
 ### Referenzen
 
-- [UC-8](../CRS/TINF24F_1-CRS-7v0.md#uc-8-referenzierung-von-cds-in-submodellen): Referenzierung von CDs in Submodellen
+- [UC-8](../CRS/TINF24F_1-CRS-6v0.md#uc-8-referenzierung-von-cds-in-submodellen): Referenzierung von CDs in Submodellen
 
 ## FR-9 – Differenz- und Detailansicht für AASX CDs und IEC Import
 
@@ -634,9 +634,9 @@ Momentan kein wireframe vorhanden
 
 ### Referenzen
 
-- [UC-5](../CRS/TINF24F_1-CRS-7v0.md#uc-5-import-funktion-für-cd-über-aasx): Import Funktion für CD über AASX
+- [UC-5](../CRS/TINF24F_1-CRS-6v0.md#uc-5-import-funktion-für-cd-über-aasx): Import Funktion für CD über AASX
 - [FR-5](#fr-5--import-funktion-für-cds-über-aasx): Import Funktion für CDs über AASX
-- [UC-6](../CRS/TINF24F_1-CRS-7v0.md#uc-6-import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
+- [UC-6](../CRS/TINF24F_1-CRS-6v0.md#uc-6-import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
 - [FR-6](#fr-6--import-funktion-für-iecs-als-cd): Import Funktion für IECs als C
 
 ## FR-10 - Löschen einzelner CDs aus dem CD repository
@@ -723,7 +723,7 @@ N -- Abbrechen --> G
 
 ### Referenzen
 
-- [UC-9](../CRS/TINF24F_1-CRS-7v0.md#uc-9-l%C3%B6schen-einzelner-cds-aus-dem-cd-repository): Löschen einzelner CDs aus dem CD repository
+- [UC-9](../CRS/TINF24F_1-CRS-6v0.md#uc-9-l%C3%B6schen-einzelner-cds-aus-dem-cd-repository): Löschen einzelner CDs aus dem CD repository
 
 ## FR-11 - CDs über JSON Datei importieren
 
@@ -781,7 +781,7 @@ y
 
 ### Referenzen
 
-- [UC-10](../CRS/TINF24F_1-CRS-7v0.md#uc-10-cds-über-json-datei-importieren): CDs über JSON Datei importieren
+- [UC-10](../CRS/TINF24F_1-CRS-6v0.md#uc-10-cds-über-json-datei-importieren): CDs über JSON Datei importieren
 
 ---
 
