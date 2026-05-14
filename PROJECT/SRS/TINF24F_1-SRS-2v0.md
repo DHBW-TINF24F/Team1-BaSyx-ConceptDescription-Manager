@@ -1,4 +1,4 @@
-# Customer Requirement Specification (CRS) - BaSyx ConceptDescription-Plugin (CD-Manager)
+# Software Requirement Specification (SRS) - BaSyx ConceptDescription-Plugin (CD-Manager)
 
 ## Versionskontrolle
 
