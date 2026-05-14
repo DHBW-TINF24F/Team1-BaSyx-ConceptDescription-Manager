@@ -153,7 +153,7 @@ werden kann.
 ### Referenzen
 
 - [CRS Dokument](../CRS/TINF24F_1-CRS-6v0.md)
-- [SAS Dokument] (../SAS/TINF24F_1-SAS-3v0.md)
+- [SAS Dokument](../SAS/TINF24F_1-SAS-3v0.md)
 
 ---
 
@@ -234,7 +234,7 @@ flowchart TD
 
 - [UC-1](../CRS/TINF24F_1-CRS-6v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern): CDs in Tabelle
   und Tabellenseiten auflisten und suchen/filtern
-- [MOD-1 - CD Table](../SAS/TINF24F_1-SAS-3v0.md../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table)
+- [MOD-1 - CD Table](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table)
 - [MOD-2 - CD Store](../SAS/TINF24F_1-SAS-3v0.md#mod-2---cd-store)
 
 ## FR-2 - Interaktionen auf einzelnen CDs über Ineraktions-Menü
@@ -479,7 +479,7 @@ flowchart TD
 ### Referenzen
 
 - [UC-5](../CRS/TINF24F_1-CRS-6v0.md#uc-5-import-funktion-für-cd-über-aasx): Import Funktion für CDs über AASX
-- [FR-9](#fr-9--differenz--und-detailansicht-für-aasx-cd-import): Differenz- und Detailansicht für AASX CD Import
+- [FR-9](#fr-9---differenz--und-detailansicht-für-aasx-cds-und-iec-import): Differenz- und Detailansicht für AASX CD Import
 - [MOD-4 - CD Detail View](../SAS/TINF24F_1-SAS-3v0.md#mod-4---cd-detail-view)
 - [MOD-10 - AASX CD Importer](../SAS/TINF24F_1-SAS-3v0.md#mod-10---aasx-cd-importer)
 
@@ -534,7 +534,7 @@ flowchart TD
 ### Referenzen
 
 - [UC-6](../CRS/TINF24F_1-CRS-6v0.md#uc-6-import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
-- [NFR-1](#nfr-1--differenz--und-detailansicht-für-aasx-cd-import): Differenz- und Detailansicht für AASX CD Import
+- [FR-9](#fr-9---differenz--und-detailansicht-für-aasx-cds-und-iec-import): Differenz- und Detailansicht für AASX CD Import
 - [MOD-4 - CD Detail View](../SAS/TINF24F_1-SAS-3v0.md#mod-4---cd-detail-view)
 - [MOD-11 - IEC CDD Importer](../SAS/TINF24F_1-SAS-3v0.md#mod-11---iec-cdd-importer)
 
@@ -665,9 +665,9 @@ Momentan kein wireframe vorhanden
 ### Referenzen
 
 - [UC-5](../CRS/TINF24F_1-CRS-6v0.md#uc-5-import-funktion-für-cd-über-aasx): Import Funktion für CD über AASX
-- [FR-5](#fr-5--import-funktion-für-cds-über-aasx): Import Funktion für CDs über AASX
+- [FR-5](#fr-5---import-funktion-für-cds-über-aasx): Import Funktion für CDs über AASX
 - [UC-6](../CRS/TINF24F_1-CRS-6v0.md#uc-6-import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
-- [FR-6](#fr-6--import-funktion-für-iecs-als-cd): Import Funktion für IECs als C
+- [FR-6](#fr-6---import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
 - [MOD-10 - AASX CD Importer](../SAS/TINF24F_1-SAS-3v0.md#mod-10---aasx-cd-importer)
 
 ## FR-10 - Löschen einzelner CDs aus dem CD repository
@@ -756,7 +756,6 @@ N -- Abbrechen --> G
 
 - [UC-9](../CRS/TINF24F_1-CRS-6v0.md#uc-9-l%C3%B6schen-einzelner-cds-aus-dem-cd-repository): Löschen einzelner CDs aus dem CD repository
 - [MOD-3 - Interaction menu](../SAS/TINF24F_1-SAS-3v0.md#mod-3---interaction-menu)
-- [MOD-5 - CD Editor](../SAS/TINF24F_1-SAS-3v0.md#mod-5---cd-editor)
 - [MOD-8 - CD Delete View](../SAS/TINF24F_1-SAS-3v0.md#mod-8---cd-delete-view)
 - [MOD-9 - Reference Checker](../SAS/TINF24F_1-SAS-3v0.md#mod-9---reference-checker)
 
