@@ -138,11 +138,11 @@ Zusätzlich sollen Nutzer die Möglichkeit haben, gezielt nach bestimmten CDs zu
 #### Referenzen
 
 **Direkt Verwandt:**
-- [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern): CDs in Tabelle anzeigen sowie suchen und filtern****
+- [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern): CDs in Tabelle anzeigen sowie suchen und filtern
 - [MOD-1](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table): CD Table
 - [NFR-1](../SRS/TINF24F_1-SRS-2v0.md#nfr-1---nutzerfreundlichkeit): Nutzerfreundlichkeit
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [NFR-2](../SRS/TINF24F_1-SRS-2v0.md#nfr-2---responsive-design): Responsive Design
 - [MOD-2](../SAS/TINF24F_1-SAS-3v0.md#mod-2---cd-store): CD Store
 - [MOD-3](../SAS/TINF24F_1-SAS-3v0.md#mod-3---interaction-menu): Interaction menu
@@ -175,7 +175,7 @@ Das Interaktionsmenü soll dem Nutzer erlauben mit dem CD auf folgende weise zu 
 - [MOD-1](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table): CD Table
 - [MOD-3](../SAS/TINF24F_1-SAS-3v0.md#mod-3---interaction-menu): Interaction menu
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds): Detail-Ansicht für CDs
 - [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds): Editor-Ansicht für CDs
 - [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds): Export Funktion für CDs
@@ -211,7 +211,7 @@ Bedeutung oder Bezeichnung.
 - [NFR-1](../SRS/TINF24F_1-SRS-2v0.md#nfr-1---nutzerfreundlichkeit): Nutzerfreundlichkeit
 - [MOD-4](../SAS/TINF24F_1-SAS-3v0.md#mod-4---cd-detail-view): CD Detail View
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern): CDs in Tabelle anzeigen sowie suchen und filtern
 - [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) : Interaktionen auf einzelnen CDs über Ineraktions-Menü
 - [FR-5](../SRS/TINF24F_1-SRS-2v0.md#fr-5---import-funktion-für-cds-über-aasx): Import Funktion für CDs über AASX
@@ -242,7 +242,7 @@ Dabei soll sichergestellt werden, dass eine CD nicht in einen ungültigen Zustan
 - [NFR-1](../SRS/TINF24F_1-SRS-2v0.md#nfr-1---nutzerfreundlichkeit): Nutzerfreundlichkeit
 - [MOD-5](../SAS/TINF24F_1-SAS-3v0.md#mod-5---cd-editor): CD Editor
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) : Interaktionen auf einzelnen CDs über Ineraktions-Menü
 - [MOD-1](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table): CD Table
 - [MOD-2](../SAS/TINF24F_1-SAS-3v0.md#mod-2---cd-store): CD Store
@@ -262,13 +262,13 @@ Ein Nutzer soll in der Lage sein eine eigene AASX Datei hochzuladen und nur die 
 
 #### Referenzen
 
-  **Direkt Verwandt:**
+**Direkt Verwandt:**
 - [FR-5](../SRS/TINF24F_1-SRS-2v0.md#fr-5---import-funktion-für-cds-über-aasx): Import Funktion für CDs über AASX
 - [FR-9](../SRS/TINF24F_1-SRS-2v0.md#fr-9---differenz--und-detailansicht-für-aasx-cds-und-iec-import): Differenz- und Detailansicht für AASX CDs und IEC Import
 - [NFR-1](../SRS/TINF24F_1-SRS-2v0.md#nfr-1---nutzerfreundlichkeit): Nutzerfreundlichkeit
 - [MOD-10](../SAS/TINF24F_1-SAS-3v0.md#mod-10---aasx-cd-importer): AASX CD Importer
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds): Detail-Ansicht für CDs
 - [MOD-4](../SAS/TINF24F_1-SAS-3v0.md#mod-4---cd-detail-view): CD Detail View
 
@@ -287,13 +287,13 @@ Ein Nutzer soll die Möglichkeit haben, IEC-Datensätze hochzuladen und als CD z
 
 #### Referenzen
 
-  **Direkt Verwandt:**
+**Direkt Verwandt:**
 - [FR-6](../SRS/TINF24F_1-SRS-2v0.md#fr-6---import-funktion-für-iecs-als-cd): Import Funktion für IECs als CD
 - [FR-9](../SRS/TINF24F_1-SRS-2v0.md#fr-9---differenz--und-detailansicht-für-aasx-cds-und-iec-import): Differenz- und Detailansicht für AASX CDs und IEC Import
 - [NFR-1](../SRS/TINF24F_1-SRS-2v0.md#nfr-1---nutzerfreundlichkeit): Nutzerfreundlichkeit
 - [MOD-11](../SAS/TINF24F_1-SAS-3v0.md#mod-11---iec-cdd-importer): IEC CDD Importer
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds): Detail-Ansicht für CDs
 - [MOD-4](../SAS/TINF24F_1-SAS-3v0.md#mod-4---cd-detail-view): CD Detail View
 
@@ -320,7 +320,7 @@ entsprechend anders aussehen.
 - [MOD-3](../SAS/TINF24F_1-SAS-3v0.md#mod-3---interaction-menu): Interaction menu
 - [MOD-7](../SAS/TINF24F_1-SAS-3v0.md#mod-7---cd-json-exporter): CD JSON exporter
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern): CDs in Tabelle anzeigen sowie suchen und filtern
 - [FR-11](../SRS/TINF24F_1-SRS-2v0.md#fr-11---cds-über-json-datei-importieren): CDs über JSON Datei importieren
 - [MOD-1](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table): CD Table
@@ -349,7 +349,7 @@ Ein Nutzer soll die Möglichkeit haben, CDs in einem Submodell zu referenzieren 
 - [MOD-6](../SAS/TINF24F_1-SAS-3v0.md#mod-6---reference-module): Reference Module
 - [MOD-9](../SAS/TINF24F_1-SAS-3v0.md#mod-9---reference-checker): Reference Checker
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern): CDs in Tabelle anzeigen sowie suchen und filtern
 - [MOD-1](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table): CD Table
 
@@ -376,7 +376,7 @@ Zudem soll der Nutzer eine Warnung erhalten, damit klar ersichtlich ist, warum d
 - [MOD-3](../SAS/TINF24F_1-SAS-3v0.md#mod-3---interaction-menu): Interaction menu
 - [MOD-8](../SAS/TINF24F_1-SAS-3v0.md#mod-8---cd-delete-view): CD Delete View
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern): CDs in Tabelle anzeigen sowie suchen und filtern
 - [MOD-1](../SAS/TINF24F_1-SAS-3v0.md#mod-1---cd-table): CD Table
 - [MOD-2](../SAS/TINF24F_1-SAS-3v0.md#mod-2---cd-store): CD Store
@@ -402,7 +402,7 @@ Hierbei ist zu beachten, dass das exportierte CD in einem validen Format vorlieg
 - [NFR-1](../SRS/TINF24F_1-SRS-2v0.md#nfr-1---nutzerfreundlichkeit): Nutzerfreundlichkeit
 - [MOD-12](../SAS/TINF24F_1-SAS-3v0.md#mod-12---json-importer): JSON Importer
 
-  **Indirekt Verwandt**
+**Indirekt Verwandt**
 - [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds): Export Funktion für CDs
 - [MOD-7](../SAS/TINF24F_1-SAS-3v0.md#mod-7---cd-json-exporter): CD JSON exporter
 
