@@ -86,7 +86,7 @@
 
 ## Wichtige Dokumente
 
-- [Business Case: BC](../CRS/TINF24F_1-CRS-6v0.md)
+- [Business Case: BC](../BC/TINF24F_1-BC-3v0.md)
 - [Software Requirement Specification: SRS](../SRS/TINF24F_1-SRS-2v0.md)
 - [Software Architecture Specification: SAS](../SAS/TINF24F_1-SAS-3v0.md)
 - [System Test Plan: STP](../STP/TINF24F_1-STP-0v3.md)
