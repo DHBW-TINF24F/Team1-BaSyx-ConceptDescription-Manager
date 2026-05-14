@@ -691,6 +691,8 @@ Empfohlen wird eine Text Eingabe, mit der der Nutzer einen prägnanten Satz schr
 
 ### UI / Designvorstellung
 
+![](images/cd-delete-dialog.png)
+
 ### Ablauf
 
 #### Erfolgsfall
