@@ -27,6 +27,7 @@
 * [Business Case (BC) - BaSyx ConceptDescription-Plugin(CD-Manager)](#business-case-bc---basyx-conceptdescription-plugincd-manager)
   * [Versionskontrolle](#versionskontrolle)
   * [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  * [Wichtige Dokumente](#wichtige-dokumente)
   * [Übersicht](#übersicht)
     * [Projektbeschreibung](#projektbeschreibung)
     * [Ausgangssituation](#ausgangssituation)
@@ -47,6 +48,13 @@
   * [Projektplanung](#projektplanung)
     * [GANTT-Diagramm](#gantt-diagramm)
 <!-- TOC -->
+
+## Wichtige Dokumente
+
+- [Customer Requirement Specification: CRS](../CRS/TINF24F_1-CRS-6v0.md)
+- [Software Requirement Specification: SRS](../SRS/TINF24F_1-SRS-2v0.md)
+- [Software Architecture Specification: SAS](../SAS/TINF24F_1-SAS-3v0.md)
+- [System Test Plan: STP](../STP/TINF24F_1-STP-0v3.md)
 
 ## Übersicht
 
