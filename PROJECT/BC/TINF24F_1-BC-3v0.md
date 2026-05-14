@@ -1,9 +1,9 @@
 # Business Case (BC) - BaSyx ConceptDescription-Plugin(CD-Manager)
 
-| Auftraggeber:    | M. Rentschler & A. Zielstorff |
-|:-----------------|-------------------------------|
-| Firmenstandort:  | Lerchenweg 1, 70178           |
-| Hersteller Name: | Team 1                        |
+| Auftraggeber:    | M. Rentschler & P. Wójcik & A. Zielstorff |
+|------------------|-------------------------------------------|
+| Firmenstandort:  | Lerchenweg 1, 70178                       |
+| Hersteller Name: | Team 1                                    |
 
 | Rolle                 | Name der Beteiligten |
 |-----------------------|----------------------|
