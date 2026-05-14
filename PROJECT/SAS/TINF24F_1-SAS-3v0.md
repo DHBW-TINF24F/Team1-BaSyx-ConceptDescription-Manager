@@ -111,7 +111,7 @@
 This System Architecture Specification (SAS) describes the planned extension of an already existing System from an
 architectural point of view.  
 The goal is to provide technical insights for the realization of the features described in
-the [Customer Requirement Specification (CRS)](../CRS/TINF24F_1-CRS-7v0.md)
+the [Customer Requirement Specification (CRS)](../CRS/TINF24F_1-CRS-6v0.md)
 and [Software Requirement Specification (SRS)](../SRS/TINF24F_1-SRS-2v0.md)
 for developers (devs), software testers and project owners (POs).
 
@@ -178,7 +178,7 @@ Below are some references to valuable information about the components
 ## Tech Stack
 
 This tech stack only contains the technologies used to implement the requirements of
-the [CRS](../CRS/TINF24F_1-CRS-7v0.md) and [SRS](../SRS/TINF24F_1-SRS-2v0.md) in the Web UI.
+the [CRS](../CRS/TINF24F_1-CRS-6v0.md) and [SRS](../SRS/TINF24F_1-SRS-2v0.md) in the Web UI.
 
 The other Components of the Black Box structure are essential to make this feature work, but are already integrated and
 will be used via an abstraction layer inside the frontend.
@@ -253,18 +253,18 @@ Therefore, this module with make use of the Client as tool to communicate with t
 
 **Derived from:**
 
-- [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern) & [UC-1](../CRS/TINF24F_1-CRS-7v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern)
+- [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern) & [UC-1](../CRS/TINF24F_1-CRS-6v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern)
   (CDs in Tabelle anzeigen sowie suchen und filtern)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Tabellen-interaktionen auf einzelnen CDs)
-- [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds) & [UC-4](../CRS/TINF24F_1-CRS-7v0.md#uc-4-editor-ansicht-für-cds)
+- [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds) & [UC-4](../CRS/TINF24F_1-CRS-6v0.md#uc-4-editor-ansicht-für-cds)
   (Editor-Ansicht für CDs)
-- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-7v0.md#uc-7-export-funktion-für-cds)
+- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-6v0.md#uc-7-export-funktion-für-cds)
   (Export Funktion für CDs)
-- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-7v0.md#uc-8-referenzierung-von-cds-in-submodellen)
+- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-6v0.md#uc-8-referenzierung-von-cds-in-submodellen)
   (Referenzierung von CDs in Submodellen)
 
 ---
@@ -287,20 +287,20 @@ Going further than the other stores in terms of functionality and responsibility
 
 **Derived from:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Tabellen-interaktionen auf einzelnen CDs)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern) & [UC-1](../CRS/TINF24F_1-CRS-7v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern)
+- [FR-1](../SRS/TINF24F_1-SRS-2v0.md#fr-1---cds-in-tabelle-anzeigen-sowie-suchen-und-filtern) & [UC-1](../CRS/TINF24F_1-CRS-6v0.md#uc-1-cds-in-tabelle-und-tabellenseiten-auflisten-und-suchenfiltern)
   (CDs in Tabelle anzeigen sowie suchen und filtern)
-- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-7v0.md#uc-3-detail-ansicht-für-cds)
+- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-6v0.md#uc-3-detail-ansicht-für-cds)
   (Detail-Ansicht für CDs)
-- [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds) & [UC-4](../CRS/TINF24F_1-CRS-7v0.md#uc-4-editor-ansicht-für-cds)
+- [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds) & [UC-4](../CRS/TINF24F_1-CRS-6v0.md#uc-4-editor-ansicht-für-cds)
   (Editor-Ansicht für CDs)
-- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-7v0.md#uc-7-export-funktion-für-cds)
+- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-6v0.md#uc-7-export-funktion-für-cds)
   (Export Funktion für CDs)
-- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-7v0.md#uc-8-referenzierung-von-cds-in-submodellen)
+- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-6v0.md#uc-8-referenzierung-von-cds-in-submodellen)
   (Referenzierung von CDs in Submodellen)
 
 ---
@@ -323,20 +323,20 @@ existing references.
 
 **Derived from:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Interaktionen auf einzelnen CDs über Ineraktions-Menü)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-7v0.md#uc-3-detail-ansicht-für-cds)
+- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-6v0.md#uc-3-detail-ansicht-für-cds)
   (Detail-Ansicht für CDs)
-- [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds) & [UC-4](../CRS/TINF24F_1-CRS-7v0.md#uc-4-editor-ansicht-für-cds)
+- [FR-4](../SRS/TINF24F_1-SRS-2v0.md#fr-4---editor-ansicht-für-cds) & [UC-4](../CRS/TINF24F_1-CRS-6v0.md#uc-4-editor-ansicht-für-cds)
   (Editor-Ansicht für CDs)
-- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-7v0.md#uc-7-export-funktion-für-cds)
+- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-6v0.md#uc-7-export-funktion-für-cds)
   (Export Funktion für CDs)
-- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-7v0.md#uc-8-referenzierung-von-cds-in-submodellen)
+- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-6v0.md#uc-8-referenzierung-von-cds-in-submodellen)
   (Referenzierung von CDs in Submodellen)
-- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-7v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
+- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-6v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
   (Löschen einzelner CDs aus dem CD repository)
 
 ---
@@ -363,16 +363,16 @@ pattern [Vue Components](https://vuejs.org/guide/essentials/component-basics.htm
 
 **Derived from:**
 
-- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-7v0.md#uc-3-detail-ansicht-für-cds)
+- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-6v0.md#uc-3-detail-ansicht-für-cds)
   (Detail-Ansicht für CDs)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Tabellen-interaktionen auf einzelnen CDs)
-- [FR-5](../SRS/TINF24F_1-SRS-2v0.md#fr-5---import-funktion-für-cds-über-aasx) & [UC-5](../CRS/TINF24F_1-CRS-7v0.md#uc-5-import-funktion-für-cd-über-aasx)
+- [FR-5](../SRS/TINF24F_1-SRS-2v0.md#fr-5---import-funktion-für-cds-über-aasx) & [UC-5](../CRS/TINF24F_1-CRS-6v0.md#uc-5-import-funktion-für-cd-über-aasx)
   (Import Funktion für CDs über AASX)
-- [FR-6](../SRS/TINF24F_1-SRS-2v0.md#fr-6---import-funktion-für-iecs-als-cd) & [UC-6](../CRS/TINF24F_1-CRS-7v0.md#uc-6-import-funktion-für-iecs-als-cd)
+- [FR-6](../SRS/TINF24F_1-SRS-2v0.md#fr-6---import-funktion-für-iecs-als-cd) & [UC-6](../CRS/TINF24F_1-CRS-6v0.md#uc-6-import-funktion-für-iecs-als-cd)
   (Import Funktion für IECs als CD)
 
 ---
@@ -396,12 +396,12 @@ put into editor mode.
 
 **Derived from:**
 
-- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-7v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
+- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-6v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
   (Löschen einzelner CDs aus dem CD repository)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Interaktionen auf einzelnen CDs über Ineraktions-Menü)
 
 ---
@@ -426,12 +426,12 @@ For both there is already a Vue component to display them, those should be reuse
 
 **Derived from:**
 
-- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-7v0.md#uc-8-referenzierung-von-cds-in-submodellen)
+- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-6v0.md#uc-8-referenzierung-von-cds-in-submodellen)
   (Referenzierung von CDs in Submodellen)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Interaktionen auf einzelnen CDs über Ineraktions-Menü)
 
 ---
@@ -456,7 +456,7 @@ If a JSON export functionality already exists, it should be re-used for this mod
 
 **Derived from:**
 
-- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-7v0.md#uc-7-export-funktion-für-cds)
+- [FR-7](../SRS/TINF24F_1-SRS-2v0.md#fr-7---export-funktion-für-cds) & [UC-7](../CRS/TINF24F_1-CRS-6v0.md#uc-7-export-funktion-für-cds)
   (Export Funktion für CDs)
 
 **Other functional requirements and use cases linked to this module:**
@@ -483,7 +483,7 @@ reference this CD
 
 **Derived from:**
 
-- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-7v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
+- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-6v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
   (Löschen einzelner CDs aus dem CD repository)
 
 **Other functional requirements and use cases linked to this module:**
@@ -508,9 +508,9 @@ This will be a non-visual module.
 
 **Derived from:**
 
-- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-7v0.md#uc-8-referenzierung-von-cds-in-submodellen)
+- [FR-8](../SRS/TINF24F_1-SRS-2v0.md#fr-8---referenzierung-von-cds-in-sms) & [UC-8](../CRS/TINF24F_1-CRS-6v0.md#uc-8-referenzierung-von-cds-in-submodellen)
   (Referenzierung von CDs in Submodellen)
-- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-7v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
+- [FR-10](../SRS/TINF24F_1-SRS-2v0.md#fr-10---löschen-einzelner-cds-aus-dem-cd-repository) & [UC-9](../CRS/TINF24F_1-CRS-6v0.md#uc-9-löschen-einzelner-cds-aus-dem-cd-repository)
   (Löschen einzelner CDs aus dem CD repository)
 
 **Other functional requirements and use cases linked to this module:**
@@ -537,14 +537,14 @@ There should be a diff functionality and a detail view for the user so they can 
 
 **Derived from:**
 
-- [FR-5](../SRS/TINF24F_1-SRS-2v0.md#fr-5---import-funktion-für-cds-über-aasx) & [UC-5](../CRS/TINF24F_1-CRS-7v0.md#uc-5-import-funktion-für-cd-über-aasx)
+- [FR-5](../SRS/TINF24F_1-SRS-2v0.md#fr-5---import-funktion-für-cds-über-aasx) & [UC-5](../CRS/TINF24F_1-CRS-6v0.md#uc-5-import-funktion-für-cd-über-aasx)
   (Import Funktion für CD über AASX)
 - [FR-9](../SRS/TINF24F_1-SRS-2v0.md#fr-9---differenz--und-detailansicht-für-aasx-cds-und-iec-import)
   (Import Funktion für CD über AASX)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-7v0.md#uc-3-detail-ansicht-für-cds)
+- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-6v0.md#uc-3-detail-ansicht-für-cds)
   (Detail-Ansicht für CDs)
 
 ---
@@ -569,12 +569,12 @@ the [MOD-10](#mod-10---aasx-cd-importer).
 
 **Derived from:**
 
-- [FR-6](../SRS/TINF24F_1-SRS-2v0.md#fr-6---import-funktion-für-iecs-als-cd) & [UC-6](../CRS/TINF24F_1-CRS-7v0.md#uc-6-import-funktion-für-iecs-als-cd)
+- [FR-6](../SRS/TINF24F_1-SRS-2v0.md#fr-6---import-funktion-für-iecs-als-cd) & [UC-6](../CRS/TINF24F_1-CRS-6v0.md#uc-6-import-funktion-für-iecs-als-cd)
   (Import Funktion für IECs als CD)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-7v0.md#uc-3-detail-ansicht-für-cds)
+- [FR-3](../SRS/TINF24F_1-SRS-2v0.md#fr-3---detail-ansicht-für-cds) & [UC-3](../CRS/TINF24F_1-CRS-6v0.md#uc-3-detail-ansicht-für-cds)
   (Detail-Ansicht für CDs)
 
 ---
@@ -595,12 +595,12 @@ repository.
 
 **Derived from:*
 
-- [FR-11](../SRS/TINF24F_1-SRS-2v0.md#fr-11---cds-über-json-datei-importieren) & [UC-10](../CRS/TINF24F_1-CRS-7v0.md#uc-10-cds-über-json-datei-importieren)
+- [FR-11](../SRS/TINF24F_1-SRS-2v0.md#fr-11---cds-über-json-datei-importieren) & [UC-10](../CRS/TINF24F_1-CRS-6v0.md#uc-10-cds-über-json-datei-importieren)
   (CDs über JSON Datei importieren)
 
 **Other functional requirements and use cases linked to this module:**
 
-- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-7v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
+- [FR-2](../SRS/TINF24F_1-SRS-2v0.md#fr-2---interaktionen-auf-einzelnen-cds-über-ineraktions-menü) & [UC-2](../CRS/TINF24F_1-CRS-6v0.md#uc-2-tabellen-interaktionen-auf-einzelnen-cds)
   (Interaktionen auf einzelnen CDs über Ineraktions-Menü)
 
 ---
