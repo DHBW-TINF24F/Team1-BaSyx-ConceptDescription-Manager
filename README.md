@@ -11,22 +11,20 @@
 ## Inhaltsverzeichnis
 
 <!-- TOC -->
-
 * [BaSyx ConceptDescription-Manager (CD-Manager)](#basyx-conceptdescription-manager-cd-manager)
-    * [Inhaltsverzeichnis](#inhaltsverzeichnis)
-    * [Was ist der CD-Manager?](#was-ist-der-cd-manager)
-    * [Warum dieses Projekt?](#warum-dieses-projekt)
-    * [Funktions-Überblick](#funktions-überblick)
-    * [Architektur](#architektur)
-        * [Systemkontext (Black-Box)](#systemkontext-black-box)
-        * [Modul-Struktur](#modul-struktur)
-    * [Tech-Stack](#tech-stack)
-    * [Ordnerstruktur](#ordnerstruktur)
-    * [Quick-Start für Entwickler](#quick-start-für-entwickler)
-    * [Dokumentation](#dokumentation)
-    * [UI-Bausteine im Detail](#ui-bausteine-im-detail)
-    * [Out of Scope](#out-of-scope)
-
+  * [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  * [Was ist der CD-Manager?](#was-ist-der-cd-manager)
+  * [Warum dieses Projekt?](#warum-dieses-projekt)
+  * [Funktions-Überblick](#funktions-überblick)
+  * [Architektur](#architektur)
+    * [Systemkontext (Black-Box)](#systemkontext-black-box)
+    * [Modul-Struktur](#modul-struktur)
+  * [Tech-Stack](#tech-stack)
+  * [Ordnerstruktur](#ordnerstruktur)
+  * [Quick-Start für Entwickler](#quick-start-für-entwickler)
+  * [Dokumentation](#dokumentation)
+  * [UI-Bausteine im Detail](#ui-bausteine-im-detail)
+  * [Out of Scope](#out-of-scope)
 <!-- TOC -->
 
 ---
@@ -164,7 +162,7 @@ Voraussetzungen:
 
 Die Wireframes der einzelnen UI-Bereiche dienen als verbindliche Vorlage für die
 Implementierung. Die vollständigen Anforderungen je Baustein stehen im
-[SRS](PROJECT/SRS/TINF24F_1-SRS-1v1.md).
+[SRS](PROJECT/SRS/TINF24F_1-SRS-2v0.md).
 
 | Baustein          | Vorschau                                                               |
 |-------------------|------------------------------------------------------------------------|
